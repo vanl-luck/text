@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--顶部导航-->
-    <div class="top-nav">
+    <div class="top-nav ">
       <van-image lazy-load src="https://img.yzcdn.cn/vant/cat.jpeg" class="head-img" fit="cover"></van-image>
       <div class="top-right">
         <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
@@ -82,6 +82,12 @@
             flag: '',
             title: '消费明细',
             id: 2
+          },
+              {
+            icon: 'mine_app_icon7.png',
+            flag: '',
+            title: '积分明细',
+            id: 7
           },
           {
             icon: 'mine_app_icon5.png',
@@ -166,6 +172,7 @@
           console.log(res);
           this.user = res.data.data
           this.num.rewardIntegral = res.data.data.rewardIntegral
+          sessionStorage.setItem('rewardIntegral',this.num.rewardIntegral)
           this.num.excellentIntegral = res.data.data.excellentIntegral
           this.num.shareIntegral = res.data.data.shareIntegral
 
@@ -182,9 +189,11 @@
           this._routePush('SettingsPage');
         } else if (id == 5) {
           this._routePush('addMine');
-        } else {
+        } else if(id==6){
           this._routePush('detail')
-
+        }else{
+     
+          this._routePush('selectExamineRecord',{rewardIntegral:this.num.rewardIntegral})
         }
       },
       onMessageClick() {

@@ -126,6 +126,7 @@
       },
       // 模拟登陆
       onLoginClick() {
+        
         if(this.userName&&this.password){
 
         this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}`).then(res => {

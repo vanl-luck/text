@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <!--缓存的页面-->
-    <!-- <keep-alive>
-      <router-view v-if="$route.meta.keepAlive">
-      </router-view>
-    </keep-alive> -->
+ 
     <!--不缓存的页面-->
     <router-view >
     </router-view>
@@ -37,6 +34,6 @@
 <style scoped lang="scss">
   #app {
     background-color: #f7f7f7;
-    height: 90vh;
+    height: 93vh;
   }
 </style>

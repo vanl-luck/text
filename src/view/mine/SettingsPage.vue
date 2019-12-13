@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <van-nav-bar left-arrow @click-left="_routerBack" :title="$t('settings')" fixed :z-index="10"></van-nav-bar>
     <!--内容区-->
     <div class="nav-con-16">

@@ -1,13 +1,12 @@
 <template>
-  <div>
+  <div class="grad1">
     <van-nav-bar left-arrow @click-left="_routerBack" title="消费明细" fixed :z-index="10"></van-nav-bar>
-    <div style="margin-top:50px;display:flex">
+    <div  style="margin-top:50px;display:flex">
       <van-button style="flex:1;width:150px;" @click="payData" type="default">全部</van-button>
       <van-button style="flex:1;width:150px;" @click="payData('1')" type="default">已付</van-button>
       <van-button style="flex:1;width:150px;" @click="payData('0')" type="default">没付</van-button>
     </div>
     <van-panel v-for="(item,index) in allData" style="font-size:14px;">
-
       <div>
         <div style="display:flex">
           <div class="cards">
@@ -36,7 +35,7 @@
 
     data() {
       return {
-        ueerId: '',
+        userId: '',
         page: 1,
         size: 100,
         allData: []
@@ -46,7 +45,7 @@
 
       payData(value) {
         let param = {
-          ueerId: JSON.parse(localStorage.getItem('user')).id,
+          userId: JSON.parse(localStorage.getItem('user')).id,
           page: this.page,
           size: this.size
         }

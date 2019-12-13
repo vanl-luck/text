@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <span v-for="(item.index) in allProducts"> -->
-    <div v-for="(item,index) in allProducts" :key="index">
+    <div class="" v-for="(item,index) in allProducts" :key="index">
       <!-- 
       <van-cell :title="item.memberName" value="点击支付" @click="pay(item.id)" size="large" :label="item.memberMoney" >
       <div class="van-card__origin-price">¥ 10.00</div>   </van-cell> -->
