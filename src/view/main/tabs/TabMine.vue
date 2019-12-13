@@ -1,0 +1,331 @@
+<template>
+  <div>
+    <!--顶部导航-->
+    <div class="top-nav">
+      <van-image lazy-load src="https://img.yzcdn.cn/vant/cat.jpeg" class="head-img" fit="cover"></van-image>
+      <div class="top-right">
+        <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
+      </div>
+    </div>
+    <!--下部内容-->
+    <div class="nav-con" v-if="">
+      <div class="amount-con" style="display:flex;">
+        <van-image round style="left:30px;" width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+        <!-- <van-image style="width:100px;left:30px;" lazy-load src="https://img.yzcdn.cn/vant/cat.jpeg" class="head-img" fit="cover">
+        </van-image> -->
+        <div style="margin-left:30px;">
+          <div class="light-txt amount-ins">名字:{{user.userName}}</div>
+          <div class="light-txt amount-ins">手机:{{user.phone}}</div>
+          <div class="light-txt amount-ins">级别:{{user.memberName}}</div>
+        </div>
+      </div>
+      <!--代收收益-->
+      <van-row class="receive-all">
+        <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.rewardIntegral,name:'奖励积分'}});">
+          <div>{{num.rewardIntegral}}</div>
+          <div class="light-txt receive-ins">奖励积分</div>
+        </van-col>
+        <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
+          class="receive-right">
+          <div>{{num.excellentIntegral}}</div>
+          <div class="light-txt receive-ins">优享积分</div>
+        </van-col>
+        <van-col span="8" @click="shareIn"
+          class="receive-right">
+          <div>{{num.shareIntegral}}</div>
+          <div class="light-txt receive-ins">共享积分</div>
+        </van-col>
+      </van-row>
+      <!--我的余额-->
+      <!-- <div class="remain-con">
+        <div>
+          <div class="red-txt avail-amount">6850.65</div>
+          <div class="light-txt avail-ins">可用余额(元)</div>
+        </div>
+        <div class="remain-right">
+          <div class="remain-draw">提现</div>
+          <div class="remain-divi"></div>
+          <van-button type="danger" round size="small" class="remain-charge">充值</van-button>
+        </div>
+      </div> -->
+      <!--下方应用入口-->
+      <van-row class="app-con">
+        <van-col span="8" v-for="(it,idx) in bottomApps" :key="idx" class="app-item click-box">
+          <div @click="pushIdx(it.id)">
+            <van-image v-if="it.flag" :src="'static/img/mine/'+it.flag" class="flag-icon"></van-image>
+            <div>
+              <van-image :src="'static/img/mine/'+it.icon" class="app-icon"></van-image>
+              <div class="app-text light-txt">{{it.title}}</div>
+            </div>
+          </div>
+        </van-col>
+      </van-row>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    // name: "tab-mine",
+    //  inject: ['reload'],
+    data() {
+      return {
+        // user:'',
+        bottomApps: [{
+            icon: 'mine_app_icon3.png',
+            flag: '',
+            title: '提现明细',
+            id: 1
+          },
+          {
+            icon: 'mine_app_icon6.png',
+            flag: '',
+            title: '消费明细',
+            id: 2
+          },
+          {
+            icon: 'mine_app_icon5.png',
+            flag: '',
+            title: '我的会员',
+            id: 3
+          },
+          {
+            icon: 'mine_nav_settings1.png',
+            flag: '',
+            title: '我的设置',
+            id: 4
+          },
+          // {icon: 'mine_app_icon9.png', flag: '', title: '积分',id:1},
+          {
+            icon: 'mine_app_icon4.png',
+            flag: '',
+            title: '添加消费',
+            id: 5
+          },
+          {
+            icon: 'mine_app_icon2.png',
+            flag: '',
+            title: '消费管理',
+            id: 6
+          },
+          // {icon: 'mine_app_icon7.png', flag: '', title: '关于我们',},
+          // {icon: 'mine_app_icon1.png', flag: '', title: '联系客服',},
+        ],
+        user: {},
+        num: {
+          rewardIntegral: '',
+          excellentIntegral: '',
+          shareIntegral: '',
+        }
+
+      };
+    },
+    created() {
+      
+      // this.user = JSON.parse(localStorage.getItem('user'))
+      // if (user) {
+      //   this.rewardIntegral = user.rewardIntegral
+      //   this.excellentIntegral = user.excellentIntegral
+      //   this.rewardIntegral = user.rewardIntegral
+      // }
+      
+      this.numcomponent()
+
+    },
+    computed: {
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+      excellentIntegral() {
+        return this.num.excellentIntegral
+      },
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+    },
+    //   watch:{
+    //  user(){
+    //     console.log('user');
+    //   }
+    //   },
+    methods: {
+      shareIn(){
+        if(JSON.parse(localStorage.getItem('user')).sumAmount>10000){
+
+          this.$router.push({path: '/withdraw', query:{money: this.num.shareIntegral,name:'共享积分'}})
+        }else{
+           this._showToast('不满足消费金额');
+        }
+
+      },
+      //更改积分的变动
+      numcomponent() {
+        this.$http.get(
+          `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
+        ).then(res => {
+          console.log(res);
+          this.user = res.data.data
+          this.num.rewardIntegral = res.data.data.rewardIntegral
+          this.num.excellentIntegral = res.data.data.excellentIntegral
+          this.num.shareIntegral = res.data.data.shareIntegral
+
+        })
+      },
+      pushIdx(id) {
+        if (id == 1) {
+          this._routePush('consume');
+        } else if (id == 2) {
+          this._routePush('service');
+        } else if (id == 3) {
+          this._routePush('basic');
+        } else if (id == 4) {
+          this._routePush('SettingsPage');
+        } else if (id == 5) {
+          this._routePush('addMine');
+        } else {
+          this._routePush('detail')
+
+        }
+      },
+      onMessageClick() {
+        this._routePush('MessagePage');
+      },
+      onSettingsClick() {
+        this._routePush('SettingsPage')
+      },
+    },
+  }
+
+</script>
+
+<style scoped lang="scss">
+  .app-con {
+    margin: 12px 0;
+
+    .app-item {
+      border: 1px solid #f7f7f7;
+      text-align: center;
+      position: relative;
+      padding: 24px 0;
+
+      .flag-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 36px;
+        height: 36px;
+      }
+
+      .app-text {
+        font-size: 14px;
+      }
+
+      .app-icon {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  .remain-con {
+    margin-top: 12px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+
+    .avail-amount {
+      font-size: 20px;
+    }
+
+    .avail-ins {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    .remain-right {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+
+      .remain-divi {
+        width: 1px;
+        height: 24px;
+        margin: 0 18px;
+        background-color: #cccccc;
+      }
+
+      .remain-charge {
+        height: 24px;
+        line-height: 21px;
+      }
+    }
+  }
+
+  .receive-all {
+    text-align: center;
+    margin-top: 12px;
+    background-color: white;
+    padding: 16px;
+
+    .receive-right {
+      border-left: 1px solid #cccccc;
+    }
+
+    .receive-ins {
+      font-size: 14px;
+      margin-top: 6px;
+    }
+  }
+
+  .amount-con {
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+
+    .amount-ins {
+      margin-left: 20px;
+      text-align: left;
+      font-size: 14px;
+      width: 130px;
+      margin-top: 10px;
+    }
+
+    .amount-txt {
+      font-size: 28px;
+    }
+  }
+
+  .top-nav {
+    background-color: white;
+    position: fixed;
+    height: 50px;
+    z-index: 10;
+    border-bottom: 1px solid #f7f7f7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .top-right {
+      margin-right: 16px;
+    }
+
+    .head-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 40px;
+      overflow: hidden;
+      margin-left: 16px;
+    }
+
+    .van-image__img {
+      border-radius: 5px;
+    }
+  }
+
+</style>
