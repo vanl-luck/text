@@ -20,9 +20,7 @@
           if (res.data.code == 200) {
             this.imgSrc = res.data.data
             // this.allData = res.data.data.list
-          } else {
-            this.$toast("网络错误");
-          }
+          } 
         })
       }
     },

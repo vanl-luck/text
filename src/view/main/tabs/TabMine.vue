@@ -169,13 +169,13 @@
         this.$http.get(
           `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
         ).then(res => {
-          console.log(res);
+             localStorage.clear()  
+             localStorage.setItem('user', JSON.stringify(res.data.data))
           this.user = res.data.data
           this.num.rewardIntegral = res.data.data.rewardIntegral
           sessionStorage.setItem('rewardIntegral',this.num.rewardIntegral)
           this.num.excellentIntegral = res.data.data.excellentIntegral
           this.num.shareIntegral = res.data.data.shareIntegral
-
         })
       },
       pushIdx(id) {

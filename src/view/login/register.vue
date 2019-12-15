@@ -155,7 +155,7 @@ import { Dialog } from 'vant';
             setTimeout(() => {
               Toast('注册成功');
               this._dismissLoading('注册成功');
-              this._routePush('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
+         window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
             }, 1000);
 
           } else {

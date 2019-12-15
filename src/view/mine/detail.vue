@@ -60,7 +60,7 @@
             录入时间:{{item.addTime}}
           </div>
           <div>
-            <van-button @click="det(item.id)" size="small" type="danger">删除</van-button>
+            <van-button @click="det(item.id)" v-if="item.state!=1" size="small" type="danger">删除</van-button>
           </div>
         </div>
 

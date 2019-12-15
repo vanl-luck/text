@@ -42,7 +42,7 @@
 
             </div>
             <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)" v-if="item.integralState==1" :disabled="item.id!=buttonShare">提现
+              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)" v-if="item.integralState==1" :disabled="!item.integralState==1">提现
                 
               </van-button>
             </van-divider>
@@ -55,7 +55,20 @@
       <van-field v-model="name" disabled clearable label="姓名" placeholder="请输入项目的费用" />
       <van-field v-model="Alipay" disabled clearable label="支付宝账号" placeholder="请输入项目的费用" />
       <van-field v-model="money" disabled clearable label="可提现金额" />
-      <van-field v-model="Tqu" clearable label="提现金" />
+            <van-field v-model="Tqu" clearable label="提现金" placeholder="请选择提现金额"
+        @focus="start" />
+      <van-popup v-model="show" position="bottom">
+        
+       <!-- <div v-for="domain in listSelect"> -->
+         
+                <van-picker show-toolbar title="请选择提现金额" :columns="columns" @cancel="cancel" @confirm="confirm"  />
+         <!-- {{domain}} -->
+       <!-- </div> -->
+        <!-- <van-datetime-picker type="date"  @confirm="confirm"
+          @cancel="cancel" /> -->
+
+      </van-popup>
+      
     </div>
     <!-- <div v-if="this.judge==2">
         <van-field v-model="userMony" clearable label="可用余额" />
@@ -70,10 +83,15 @@
   </div>
 </template>
 <script>
+// import { DropdownMenu, DropdownItem } from 'vant';
+
+import { Popup } from 'vant';
+import { Picker } from 'vant';
   export default {
 
     data() {
       return {
+        columns:[],
         list: [],
         isUpLoading: false,
         upFinished: false,
@@ -87,27 +105,49 @@
         lineUp: [],
         page: 1,
         pageSize: 10,
-        buttonShare:''
+        buttonShare:'',
+        show:false,
+        listSelect:[]
 
       }
     },
     methods: {
+           confirm() {
+        this.show = false;
+ 
+      },
+            cancel() {
+        this.show = false;
+      },
+        start() {
+        this.show = true;
+      },
       onLoad() {
         this.pageSize++
         this.integration()
       },
       moneyS(res) {
-        console.log(res);
+       
         this.judge = res
       },
       onClickButtonSubmit(value) {
+        let id 
+        this.listSelect.map(item=>{
+          if(this.Tqu==item.amount){
+            id=item.id
+          }
+        })
+    
+        // if(this.listSelect.map(item=>{})){
+
+        // }
         let param = {
           userId: JSON.parse(localStorage.getItem("user")).id,
           amount: this.Tqu,
-          type: this.judge
+          type: this.judge,
+          consumptionId:id
         }
         if(!isNaN(value)){
-          
           param.amount=value
           }
         this.$http.post(`api/lyRecord/save`, param).then(res => {
@@ -129,6 +169,22 @@
           this._showToast('系统错误');
         });
 
+      },
+      selectWithdraw(){
+        let param={
+          userId:JSON.parse(localStorage.getItem('user')).id
+        }
+        this.$http.post(`/login/lyConsumption/selectOne`,param).then(res => {
+console.log(res);
+this.listSelect=res.data.data
+res.data.data.map(item=>{
+  this.columns.push(item.amount) 
+})
+        })
+      },
+      confirm(value){
+        this.show=false
+this.Tqu=value
       },
       integration() {
         console.log(1);
@@ -173,11 +229,7 @@
       },
     },
     mounted() {
-      // this.integration()
-      // this.type
-      console.log(this.$route.query.name);
-      this.buttonShare=JSON.parse(localStorage.getItem("user")).id
-      console.log(this.buttonShare);
+      this.selectWithdraw()
       this.Alipay = JSON.parse(localStorage.getItem("user")).alipayUser
       this.name = JSON.parse(localStorage.getItem("user")).userName
       if (this.$route.query.name == "奖励积分") {
@@ -189,7 +241,6 @@
       if (this.$route.query.name == "共享积分") {
         this.judge = 3
       }
-      console.log(this.$route.query.name, this.$route.query.money);
     }
 
   }

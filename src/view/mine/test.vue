@@ -10,7 +10,7 @@
           <van-uploader v-model="fileList" :after-read="afterRead" />
           <!-- <van-button @click='payment' type="primary">确认付款</van-button> -->
         </van-dialog>
-        <van-button @click='payment' type="primary">确认付款</van-button>
+        <van-button @click='payment' type="primary">提交付款截图</van-button>
       </div>
     </div>
   </div>

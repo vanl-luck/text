@@ -1,7 +1,7 @@
 <template>
 
-  <div class="pages-tables grad1" id="pages-tables">
-<div class="grad1">
+  <div class="pages-tables " id="pages-tables">
+<div >
 
     <van-nav-bar left-arrow @click-left="_routerBack" title="我的会员" :z-index="10"></van-nav-bar>
 

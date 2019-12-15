@@ -22,31 +22,13 @@
         <div class="button-con">
           <van-button type="danger" round class="login-btn" @click="onLoginClick">登录
           </van-button>
+           <!-- <van-button type="danger" round class="login-btn" @click="onLoginClick1">登录
+          </van-button> -->
           <!-- <van-button type="danger" plain round class="login-btn" @click="loginWay=3-loginWay">短信登录</van-button> -->
         </div>
       </div>
       <!--验证码登陆-->
-      <div v-else>
-        <van-cell-group>
-          <!--输入账号-->
-          <van-field v-model="userName" left-icon="static/img/login/login_user.png" required clearable label="手机号"
-            placeholder="请输入手机号(随便填)" label-align="left" size="large" maxlength="11"></van-field>
-          <!--填写验证码-->
-          <van-field v-model="smsCode" clearable label="验证码" placeholder="请输入短信验证码" size="large" left-icon="envelop-o"
-            maxlength="6" required>
-            <van-button slot="button" size="small" plain type="danger" class="send-btn" @click="onSMSSend"
-              :disabled="!isSendSMSEnable">
-              {{getSendBtnText}}
-            </van-button>
-          </van-field>
-        </van-cell-group>
-        <!--账密登录按钮-->
-        <div class="button-con">
-          <van-button type="danger" round class="login-btn" :disabled="!canSMSLogin" @click="onSMSLogin">登录
-          </van-button>
-          <van-button type="danger" plain round class="login-btn" @click="loginWay=3-loginWay">账号登录</van-button>
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
@@ -125,6 +107,10 @@
         this.onLoginClick();
       },
       // 模拟登陆
+      onLoginClick1(){
+        window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
+//  this._routeReplace('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
+      },
       onLoginClick() {
         
         if(this.userName&&this.password){

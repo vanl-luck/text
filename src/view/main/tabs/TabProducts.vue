@@ -100,8 +100,19 @@
         this._dismissLoading();
         this._showToast('系统错误');
       });
+      this.clearLoc()
     },
     methods: {
+      clearLoc(){
+        this.$http.get(
+  `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
+).then(res => {
+     localStorage.clear()  
+     localStorage.setItem('user', JSON.stringify(res.data.data))
+
+})
+      },
+
       wexinPay(data, cb, errorCb) {
 
 
