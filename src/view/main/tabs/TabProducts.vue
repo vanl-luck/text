@@ -9,7 +9,7 @@
       <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'>
 
         <div slot="footer">
-          <van-button style="width: 75px;" size="mini" type="primary"  @click="pay(item.id)">点击支付</van-button>
+          <van-button style="width: 75px;" size="mini"   @click="pay(item.id)">点击支付</van-button>
         </div>
       </van-card>
     </div>
@@ -261,12 +261,18 @@
 </script>
 
 <style scoped lang="scss">
+.van-card{
+  margin: 10px;
+    border: 1px solid #ccc;
+    // background: beige;
+       box-shadow: 3px 3px 3px 0px #ccc;
+}
   .van-card__content {
     min-height: 50px;
     margin: 5px;
 
     .van-card__title {
-      font-size: 16px;
+      font-size: 20px;
     }
   }
 
@@ -292,7 +298,7 @@
       padding: 2px 10px;
 
       .rate-txt {
-        font-size: 14px;
+        font-size: 18px;
 
         .rate-big {
           font-size: 24px;
@@ -300,7 +306,7 @@
       }
 
       .rate-ins {
-        font-size: 12px;
+        font-size: 14px;
         margin-top: 4px;
       }
     }
