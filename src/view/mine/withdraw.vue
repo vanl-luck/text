@@ -41,8 +41,8 @@
               </div>
 
             </div>
-            <van-divider :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)" v-if="item.integralState==1" :disabled="!item.integralState==1">提现
+            <van-divider  :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
+              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)" v-if="id==item.id" :disabled="!item.integralState==1">提现
                 
               </van-button>
             </van-divider>
@@ -104,10 +104,11 @@ import { Picker } from 'vant';
         shopping: '',
         lineUp: [],
         page: 1,
-        pageSize: 10,
+        pageSize: 100,
         buttonShare:'',
         show:false,
-        listSelect:[]
+        listSelect:[],
+        id:''
 
       }
     },
@@ -232,6 +233,7 @@ this.Tqu=value
       this.selectWithdraw()
       this.Alipay = JSON.parse(localStorage.getItem("user")).alipayUser
       this.name = JSON.parse(localStorage.getItem("user")).userName
+      this.id= JSON.parse(localStorage.getItem("user")).id
       if (this.$route.query.name == "奖励积分") {
         this.judge = 1
       }

@@ -63,7 +63,9 @@
       num() {
 
         this.$http.post(`api/lyPay/selectExamineRecord`, {
-          userId: JSON.parse(localStorage.getItem('user')).id
+          userId: JSON.parse(localStorage.getItem('user')).id,
+          size:100,
+          page:1
         }).then(res => {
           this.explain = res.data.data.list
           this.explain.map(item => {
