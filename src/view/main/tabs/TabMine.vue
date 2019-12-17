@@ -2,16 +2,16 @@
   <div>
     <!--顶部导航-->
     <div class="top-nav ">
-      <van-image lazy-load src="https://img.yzcdn.cn/vant/cat.jpeg" class="head-img" fit="cover"></van-image>
+      <van-image lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img" ></van-image>
       <div class="top-right">
         <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
       </div>
     </div>
     <!--下部内容-->
-    <div class="nav-con" v-if="">
-      <div class="amount-con" style="display:flex;">
-        <van-image round style="left:30px;" width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-        <!-- <van-image style="width:100px;left:30px;" lazy-load src="https://img.yzcdn.cn/vant/cat.jpeg" class="head-img" fit="cover">
+    <div class="nav-con "style="background: #f0f0f0;" v-if="">
+      <div class="amount-con " style="display:flex;">
+        <van-image  style="left:30px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
+        <!-- <van-image style="width:100px;left:30px;" lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img" fit="cover">
         </van-image> -->
         <div style="margin-left:30px;">
           <div class="light-txt amount-ins">名字:{{user.userName}}</div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!--代收收益-->
-      <van-row class="receive-all">
+      <van-row class="receive-all" >
         <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.rewardIntegral,name:'奖励积分'}});">
           <div>{{num.rewardIntegral}}</div>
           <div class="light-txt receive-ins">奖励积分</div>
@@ -30,25 +30,16 @@
           <div>{{num.excellentIntegral}}</div>
           <div class="light-txt receive-ins">优享积分</div>
         </van-col>
-        <van-col span="8" @click="shareIn"
-          class="receive-right">
+        <van-col span="8" @click="shareIn" class="receive-right">
           <div>{{num.shareIntegral}}</div>
           <div class="light-txt receive-ins">共享积分</div>
         </van-col>
       </van-row>
       <!--我的余额-->
-      <!-- <div class="remain-con">
-        <div>
-          <div class="red-txt avail-amount">6850.65</div>
-          <div class="light-txt avail-ins">可用余额(元)</div>
-        </div>
-        <div class="remain-right">
-          <div class="remain-draw">提现</div>
-          <div class="remain-divi"></div>
-          <van-button type="danger" round size="small" class="remain-charge">充值</van-button>
-        </div>
-      </div> -->
+
       <!--下方应用入口-->
+      <div>
+
       <van-row class="app-con">
         <van-col span="8" v-for="(it,idx) in bottomApps" :key="idx" class="app-item click-box">
           <div @click="pushIdx(it.id)">
@@ -60,6 +51,7 @@
           </div>
         </van-col>
       </van-row>
+      </div>
     </div>
   </div>
 </template>
@@ -83,8 +75,8 @@
             title: '消费明细',
             id: 2
           },
-              {
-            icon: 'mine_app_icon7.png',
+          {
+            icon: 'prod_status4.png',
             flag: '',
             title: '积分明细',
             id: 7
@@ -114,8 +106,16 @@
             title: '消费管理',
             id: 6
           },
-          // {icon: 'mine_app_icon7.png', flag: '', title: '关于我们',},
-          // {icon: 'mine_app_icon1.png', flag: '', title: '联系客服',},
+          {
+            icon: 'mine_app_icon7.png',
+            flag: '',
+            title: '关于我们',
+          },
+          {
+            icon: 'mine_app_icon1.png',
+            flag: '',
+            title: '联系客服',
+          },
         ],
         user: {},
         num: {
@@ -127,14 +127,14 @@
       };
     },
     created() {
-      
+
       // this.user = JSON.parse(localStorage.getItem('user'))
       // if (user) {
       //   this.rewardIntegral = user.rewardIntegral
       //   this.excellentIntegral = user.excellentIntegral
       //   this.rewardIntegral = user.rewardIntegral
       // }
-      
+
       this.numcomponent()
 
     },
@@ -155,12 +155,18 @@
     //   }
     //   },
     methods: {
-      shareIn(){
-        if(JSON.parse(localStorage.getItem('user')).sumAmount>10000){
+      shareIn() {
+        if (JSON.parse(localStorage.getItem('user')).sumAmount > 10000) {
 
-          this.$router.push({path: '/withdraw', query:{money: this.num.shareIntegral,name:'共享积分'}})
-        }else{
-           this._showToast('不满足消费金额');
+          this.$router.push({
+            path: '/withdraw',
+            query: {
+              money: this.num.shareIntegral,
+              name: '共享积分'
+            }
+          })
+        } else {
+          this._showToast('不满足消费金额');
         }
 
       },
@@ -169,11 +175,11 @@
         this.$http.get(
           `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
         ).then(res => {
-             localStorage.clear()  
-             localStorage.setItem('user', JSON.stringify(res.data.data))
+          localStorage.clear()
+          localStorage.setItem('user', JSON.stringify(res.data.data))
           this.user = res.data.data
           this.num.rewardIntegral = res.data.data.rewardIntegral
-          sessionStorage.setItem('rewardIntegral',this.num.rewardIntegral)
+          sessionStorage.setItem('rewardIntegral', this.num.rewardIntegral)
           this.num.excellentIntegral = res.data.data.excellentIntegral
           this.num.shareIntegral = res.data.data.shareIntegral
         })
@@ -189,11 +195,14 @@
           this._routePush('SettingsPage');
         } else if (id == 5) {
           this._routePush('addMine');
-        } else if(id==6){
+        } else if (id == 6) {
           this._routePush('detail')
-        }else{
-     
-          this._routePush('selectExamineRecord',{rewardIntegral:this.num.rewardIntegral})
+        } else if (id == 7) {
+          this._routePush('selectExamineRecord', {
+            rewardIntegral: this.num.rewardIntegral
+          })
+        } else {
+          this._showToast('功能暂未开放');
         }
       },
       onMessageClick() {
@@ -209,7 +218,7 @@
 
 <style scoped lang="scss">
   .app-con {
-    margin: 12px 0;
+    margin: 0px 20px;
 
     .app-item {
       border: 1px solid #f7f7f7;
@@ -237,8 +246,8 @@
   }
 
   .remain-con {
-    margin-top: 12px;
-    background-color: white;
+    // margin-top: 12px;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: space-between;
     padding: 14px;
@@ -272,8 +281,14 @@
   }
 
   .receive-all {
+    box-shadow: 3px 3px 3px 1px #ccc;
+position: relative;
+    top: -10px;
+    /* border: 1px solid #e2ca9c; */
+    border-radius: 5px;
+    margin: -1px 20px;
     text-align: center;
-    margin-top: 12px;
+    // margin-top: 12px;
     background-color: white;
     padding: 16px;
 
@@ -288,13 +303,19 @@
   }
 
   .amount-con {
+   
+        background: #d85a63;
+    display: flex;
+    border-radius: 30px;
+    margin-top: -20px;
     width: 100%;
-    background-color: white;
+    // background-color: white;
     text-align: center;
     padding-top: 30px;
     padding-bottom: 20px;
 
     .amount-ins {
+      color:#f0f0f0;
       margin-left: 20px;
       text-align: left;
       font-size: 14px;
@@ -308,11 +329,11 @@
   }
 
   .top-nav {
-    background-color: white;
+    background-color: #d85a63;
     position: fixed;
     height: 50px;
     z-index: 10;
-    border-bottom: 1px solid #f7f7f7;
+    // border-bottom: 1px solid #f7f7f7;
     top: 0;
     left: 0;
     width: 100%;
@@ -327,7 +348,7 @@
     .head-img {
       width: 30px;
       height: 30px;
-      border-radius: 40px;
+      // border-radius: 40px;
       overflow: hidden;
       margin-left: 16px;
     }
@@ -336,5 +357,7 @@
       border-radius: 5px;
     }
   }
-
+.main-router-view{
+  background: #f0f0f0;
+}
 </style>

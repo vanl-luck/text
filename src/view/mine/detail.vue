@@ -25,20 +25,18 @@
         </span>
       </div>
     </van-pull-refresh> -->
-    <van-panel v-for="(item,index) in allData" >
-
-      <div :style="index==0?oneStyle:twoStyle">
-        <div style="display:flex">
+        <van-cell v-for="(item,index) in allData" :key="item.id">
+      <template slot-scope="scpoed">
+  <div class="bord" :style="index==0?oneStyle:twoStyle">
+        <div style="display:flex;    margin: 5px;">
           <div class="cards">
             客人:{{user}}
           </div>
           <div class="cards">
             项目:{{item.project}}
           </div>
-
         </div>
-
-        <div style="display:flex">
+        <div style="display:flex;    margin: 5px;">
           <div class="cards">
             总价:{{item.amount}}.00
           </div>
@@ -46,8 +44,7 @@
             结算: <span v-if="item.state==1">{{item.amount}}.00</span> <span v-else>0.00</span>
           </div>
         </div>
-
-        <div style="display:flex">
+        <div style="display:flex;    margin: 5px;">
           <div class="cards">
             补贴: <span v-if="item.state==1">已反</span> <span v-else>没反</span>
           </div>
@@ -55,7 +52,7 @@
             消费时间:{{item.consumptionTime}}
           </div>
         </div>
-        <div style="display:flex">
+        <div style="display:flex;    margin: 5px;">
           <div class="cards">
             录入时间:{{item.addTime}}
           </div>
@@ -63,11 +60,9 @@
             <van-button @click="det(item.id)" v-if="item.state!=1" size="small" type="danger">删除</van-button>
           </div>
         </div>
-
       </div>
-    </van-panel>
-
-
+      </template>
+    </van-cell>
   </div>
 </template>
 <script>
@@ -150,9 +145,12 @@
   }
 
   .cards {
-    font-size: 10px;
+    font-size: 13px;
     margin: 2px;
     flex: 1;
   }
-
+.van-panel__content{
+    border: 1px solid #e4e4e4;
+  box-shadow: 3px 3px 3px 0px #ccc;
+}
 </style>

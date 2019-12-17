@@ -13,7 +13,7 @@
 
       <div v-for="(item,index) in yList" 　v-if="yList.length!=0">
 
-        <van-card title="　" thumb="https://img.yzcdn.cn/vant/cat.jpeg">
+        <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png">
           <div slot="tags">
             <div>用户名：{{item.userName}} <span style="color:red">({{item.memberName}})</span> </div>
             <div>加入时间：{{item.registrationTime}} </div>
@@ -165,7 +165,19 @@
     -webkit-overflow-scrolling: touch; // ios滑动顺畅
     position: relative;
   }
-
+  .van-card__header{
+        border: 1px solid #e4e4e4;
+        box-shadow: 3px 3px 3px 0px #ccc;
+        margin:0px 5px;
+  }
+.van-card{
+  .van-card__thumb{
+    margin:10px;
+  }
+  .van-card__content{
+    margin:10px
+  }
+}
   .rolling-table {
     height: 100%;
     font-size: 0.28rem;

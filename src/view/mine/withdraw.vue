@@ -2,11 +2,8 @@
   <div>
     <van-nav-bar left-arrow @click-left="_routerBack" :title="$route.query.name" fixed :z-index="10"></van-nav-bar>
     <div style="margin-top:50px;display:flex">
-      <!-- <van-button type="default" style="flex:1" @click="moneyS(1)">会员提现</van-button> -->
-      <!-- <van-button type="default" style="flex:1" @click="moneyS(2)">现金转消费</van-button> -->
-
     </div>
-    <div v-if="this.judge==3">
+    <div class v-if="this.judge==3">
       <van-list v-model="isUpLoading" :finished="upFinished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item,index) in lineUp" :key="item.id">
           <template slot-scope="scpoed">
@@ -15,7 +12,6 @@
               <div style="flex:1;margin-left: 20px;">
                 <div>
                   　　排队: {{index+1}}
-
                 </div>
                 <div>
                   共享积分: {{item.shareIntegral}}
@@ -36,18 +32,15 @@
                   消费时间: {{item.consumptionTime}}
                 </div>
                 <div style="text-align:right">
-
                 </div>
               </div>
-
             </div>
-            <van-divider  :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }">
-              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)" v-if="id==item.id" :disabled="!item.integralState==1">提现
-                
+            <div v-if="item.integralState==1"   style="text-align:center;margin-right:5px;margin-right: 30px;margin-top: 5px;">
+              <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)"
+                v-if="id==item.userId">提现
               </van-button>
-            </van-divider>
+            </div>
           </template>
-
         </van-cell>
       </van-list>
     </div>
@@ -55,20 +48,19 @@
       <van-field v-model="name" disabled clearable label="姓名" placeholder="请输入项目的费用" />
       <van-field v-model="Alipay" disabled clearable label="支付宝账号" placeholder="请输入项目的费用" />
       <van-field v-model="money" disabled clearable label="可提现金额" />
-            <van-field v-model="Tqu" clearable label="提现金" placeholder="请选择提现金额"
-        @focus="start" />
+      <van-field v-model="Tqu" clearable label="提现金" placeholder="请选择提现金额" @focus="start" />
       <van-popup v-model="show" position="bottom">
-        
-       <!-- <div v-for="domain in listSelect"> -->
-         
-                <van-picker show-toolbar title="请选择提现金额" :columns="columns" @cancel="cancel" @confirm="confirm"  />
-         <!-- {{domain}} -->
-       <!-- </div> -->
+
+        <!-- <div v-for="domain in listSelect"> -->
+
+        <van-picker show-toolbar title="请选择提现金额" :columns="columns" @cancel="cancel" @confirm="confirm" />
+        <!-- {{domain}} -->
+        <!-- </div> -->
         <!-- <van-datetime-picker type="date"  @confirm="confirm"
           @cancel="cancel" /> -->
 
       </van-popup>
-      
+
     </div>
     <!-- <div v-if="this.judge==2">
         <van-field v-model="userMony" clearable label="可用余额" />
@@ -76,22 +68,26 @@
       </div> -->
     <div style="text-align:center;margin:20px;">
 
-      <van-button v-if="this.judge==1||this.judge==2" type="primary" size="large" @click="onClickButtonSubmit"><span v-if="this.judge==1">确认提现</span><span
-          v-if="this.judge==2">确认</span></van-button>
+      <van-button v-if="this.judge==1||this.judge==2" type="primary" size="large" @click="onClickButtonSubmit"><span
+          v-if="this.judge==1">确认提现</span><span v-if="this.judge==2">确认</span></van-button>
     </div>
 
   </div>
 </template>
 <script>
-// import { DropdownMenu, DropdownItem } from 'vant';
+  // import { DropdownMenu, DropdownItem } from 'vant';
 
-import { Popup } from 'vant';
-import { Picker } from 'vant';
+  import {
+    Popup
+  } from 'vant';
+  import {
+    Picker
+  } from 'vant';
   export default {
 
     data() {
       return {
-        columns:[],
+        columns: [],
         list: [],
         isUpLoading: false,
         upFinished: false,
@@ -105,22 +101,22 @@ import { Picker } from 'vant';
         lineUp: [],
         page: 1,
         pageSize: 100,
-        buttonShare:'',
-        show:false,
-        listSelect:[],
-        id:''
+        buttonShare: '',
+        show: false,
+        listSelect: [],
+        id: ''
 
       }
     },
     methods: {
-           confirm() {
+      confirm() {
         this.show = false;
- 
+
       },
-            cancel() {
+      cancel() {
         this.show = false;
       },
-        start() {
+      start() {
         this.show = true;
       },
       onLoad() {
@@ -128,17 +124,17 @@ import { Picker } from 'vant';
         this.integration()
       },
       moneyS(res) {
-       
+
         this.judge = res
       },
       onClickButtonSubmit(value) {
-        let id 
-        this.listSelect.map(item=>{
-          if(this.Tqu==item.amount){
-            id=item.id
+        let id
+        this.listSelect.map(item => {
+          if (this.Tqu == item.amount) {
+            id = item.id
           }
         })
-    
+
         // if(this.listSelect.map(item=>{})){
 
         // }
@@ -146,11 +142,11 @@ import { Picker } from 'vant';
           userId: JSON.parse(localStorage.getItem("user")).id,
           amount: this.Tqu,
           type: this.judge,
-          consumptionId:id
+          consumptionId: id
         }
-        if(!isNaN(value)){
-          param.amount=value
-          }
+        if (!isNaN(value)) {
+          param.amount = value
+        }
         this.$http.post(`api/lyRecord/save`, param).then(res => {
           console.log(res.data.code);
           if (res.data.code == 200) {
@@ -171,21 +167,21 @@ import { Picker } from 'vant';
         });
 
       },
-      selectWithdraw(){
-        let param={
-          userId:JSON.parse(localStorage.getItem('user')).id
+      selectWithdraw() {
+        let param = {
+          userId: JSON.parse(localStorage.getItem('user')).id
         }
-        this.$http.post(`/login/lyConsumption/selectOne`,param).then(res => {
-console.log(res);
-this.listSelect=res.data.data
-res.data.data.map(item=>{
-  this.columns.push(item.amount) 
-})
+        this.$http.post(`/login/lyConsumption/selectOne`, param).then(res => {
+          console.log(res);
+          this.listSelect = res.data.data
+          res.data.data.map(item => {
+            this.columns.push(item.amount)
+          })
         })
       },
-      confirm(value){
-        this.show=false
-this.Tqu=value
+      confirm(value) {
+        this.show = false
+        this.Tqu = value
       },
       integration() {
         console.log(1);
@@ -194,7 +190,7 @@ this.Tqu=value
           page: this.page,
           size: this.pageSize,
           state: 1,
-          recordState:0
+          recordState: 0
         }
         this.$http.post(`/login/lyConsumption/selectALL`, param).then(res => {
           if (res.data.code === 200) {
@@ -233,7 +229,7 @@ this.Tqu=value
       this.selectWithdraw()
       this.Alipay = JSON.parse(localStorage.getItem("user")).alipayUser
       this.name = JSON.parse(localStorage.getItem("user")).userName
-      this.id= JSON.parse(localStorage.getItem("user")).id
+      this.id = JSON.parse(localStorage.getItem("user")).id
       if (this.$route.query.name == "奖励积分") {
         this.judge = 1
       }
@@ -248,3 +244,11 @@ this.Tqu=value
   }
 
 </script>
+<style lang="scss" scoped>
+  .van-cell__value {
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 3px 3px 0px #ccc;
+    margin: 0px 5px;
+  }
+
+</style>

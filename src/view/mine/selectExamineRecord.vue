@@ -35,7 +35,7 @@
             <div v-for="(item,index) in explain">
               <van-panel
               v-if="item.relationship==9"
-                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.relationship+')'"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+'优享积分'+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
             </div>
@@ -99,6 +99,9 @@
             if (item.relationship == 8) {
               item.relationship = '终端终端VIP团队奖'
             }
+            //      if (item.relationship == 9) {
+            //   item.relationship = '优享积分'
+            // }
 
           })
 
@@ -131,12 +134,12 @@
 
   .running {
     margin: 10px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
   }
 
   .van-cell {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .van-cell__title {

@@ -1,15 +1,35 @@
 <template>
-  <div>
+  <div class="product">
     <!-- <span v-for="(item.index) in allProducts"> -->
-    <div class="" v-for="(item,index) in allProducts" :key="index">
+    <div v-for="(item,index) in allProducts" :key="index">
       <!-- 
       <van-cell :title="item.memberName" value="点击支付" @click="pay(item.id)" size="large" :label="item.memberMoney" >
       <div class="van-card__origin-price">¥ 10.00</div>   </van-cell> -->
 
       <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'>
-
+        <div slot="tags" v-if="index==0">
+          <p>　招商直推20%间推3% 　　医美终端20%-间推3%</p>
+          <p>　优享积分45%</p>
+          <p>《神奇性格色彩》　课程 　《现代医美专业》课程</p>
+          <p>《陈添良风水面相》课程 　　慈善基金会公益活动</p>
+        </div>
+        <div slot="tags" v-if="index==1">
+          <p>招商直推30%间推8% 　　医美终端30%间推3%</p>
+          <p>vip团队10%  　　 　　 　　 　vip团队5%</p>
+          <p>优享积分50% 　　 　　《百万医美》专业课程</p>
+          <p>商学院体系价值39800 　6天5晚西双版纳豪华游</p>
+          <p>赠送vip名额1位 　　 　　慈善基金会公益活动</p>
+        </div>
+                <div slot="tags" v-if="index==2">
+          <p>招商直推40%间推8%　　代言人团队10%,vip团队20%</p>
+          <p>医美终端40%间推3% 　　代言人团队5%,vip团队10%</p>
+          <p>优享积分55%　　　　　　　　《百万医美》专业课程</p>
+          <p>商学院体系全部课程价值39800　　6天5夜泰国豪华游</p>
+          <p>深圳游艇会vip身份1一名　　　　　　赠送vip名额5位</p>
+          <p>慈善基金会公益活动</p>
+        </div>
         <div slot="footer">
-          <van-button style="width: 75px;" size="mini"   @click="pay(item.id)">点击支付</van-button>
+          <van-button style="width: 75px;" size="mini" @click="pay(item.id)">点击支付</van-button>
         </div>
       </van-card>
     </div>
@@ -52,7 +72,7 @@
     name: "tab-products",
     data() {
       return {
-        price:[2980.00,20000.00],
+        price: [2980.00, 20000.00],
         img: [
           '../../../../static/img/Snipaste_2019-12-10_17-43-06.png',
           '../../../../static/img/Snipaste_2019-12-10_17-46-26.png',
@@ -103,14 +123,14 @@
       this.clearLoc()
     },
     methods: {
-      clearLoc(){
+      clearLoc() {
         this.$http.get(
-  `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
-).then(res => {
-     localStorage.clear()  
-     localStorage.setItem('user', JSON.stringify(res.data.data))
+          `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
+        ).then(res => {
+          localStorage.clear()
+          localStorage.setItem('user', JSON.stringify(res.data.data))
 
-})
+        })
       },
 
       wexinPay(data, cb, errorCb) {
@@ -261,18 +281,33 @@
 </script>
 
 <style scoped lang="scss">
-.van-card{
-  margin: 10px;
+  .product {
+    background: -webkit-linear-gradient(#c9ddd8, #cadcd8);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#f4f9f7, #f4f9f7);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#c9ddd8, #f4f9f7);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(#c9ddd8, #f4f9f7);
+    /* 标准的语法（必须放在最后） */
+  }
+
+  .van-card {
+    margin: 10px;
     border: 1px solid #ccc;
-    // background: beige;
-       box-shadow: 3px 3px 3px 0px #ccc;
-}
+    // background:linear-gradient(#55bd8c,#4fc281,#51c677,#60d285);
+    box-shadow: 3px 3px 3px 0px #ccc;
+  }
+
   .van-card__content {
     min-height: 50px;
     margin: 5px;
 
     .van-card__title {
       font-size: 20px;
+      max-height: 32px;
+      font-weight: 500;
+      line-height: 20px;
     }
   }
 

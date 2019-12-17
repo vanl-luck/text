@@ -1,9 +1,34 @@
 <template>
 
-  <div class="pages-tables " id="pages-tables">
+<div>
+      <van-nav-bar left-arrow @click-left="_routerBack" title="提现明细" :z-index="10"></van-nav-bar>
+      <van-cell v-for="(item,index) in allData" :key="item.id">
+      <template slot-scope="scpoed">
+        <div class="bord" style="display:flex;font-size:14px;">
+
+          <div style="flex:1;margin:5px;">
+            <div>
+              提现金额:{{item.amount}}.00
+            </div>
+            <div>
+              支付宝:{{item.alipayUser}}
+            </div>
+            <div style="text-align:left">
+              状态: {{item.state}}
+            </div>
+          </div>
+          <div style="flex:1;margin:5px;">
+            <div>
+              时间:{{item.addTime}}
+            </div>
+          </div>
+        </div>
+      </template>
+    </van-cell>
+</div>
+  <!-- <div class="pages-tables " id="pages-tables">
 
     <van-nav-bar left-arrow @click-left="_routerBack" title="提现明细" :z-index="10"></van-nav-bar>
-    <!-- </van-search> -->
     <div v-if="yList.length!=0">
 
       <div class="waterMask" id="watermark"></div>
@@ -27,7 +52,7 @@
     <div v-else> 
      <span class="table__empty-text"><p style="color: #909399;">暂无数据</p></span>
     </div>
-  </div>
+  </div> -->
 </template>
 <script>
   import {
@@ -66,7 +91,7 @@
 
         ],
         xField: ["amount", 'alipayUser', "state", ],
-        yList: [
+        allData: [
 
         ],
         page: 1,
@@ -107,9 +132,10 @@
         this.$http.post('api/lyRecord/selectALL', param).then(res => {
           if (res.data.code == 200) {
 
-            this.yList = value ? res.data.data : res.data.data.list
+            this.allData = value ? res.data.data : res.data.data.list
 
-            this.yList.map(item => {
+            this.allData.map(item => {
+              item.addTime= item.addTime.slice(0,10)
               if (item.state == 0) {
                 item.state = '未处理'
               }
@@ -127,6 +153,10 @@
 
 </script>
 <style lang="less" scoped>
+.van-cell__value{
+    // border: 1px solid #e4e4e4;
+  box-shadow: 3px 3px 3px 0px #ccc;
+}
   .pages-tables {
     -webkit-overflow-scrolling: touch; // ios滑动顺畅
     position: relative;
