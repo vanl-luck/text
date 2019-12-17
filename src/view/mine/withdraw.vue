@@ -138,6 +138,8 @@
         // if(this.listSelect.map(item=>{})){
 
         // }
+        if(this.amount){
+   
         let param = {
           userId: JSON.parse(localStorage.getItem("user")).id,
           amount: this.Tqu,
@@ -165,7 +167,10 @@
           this._dismissLoading();
           this._showToast('系统错误');
         });
-
+       
+        }else{
+             this._showToast('请选择金额');
+        }
       },
       selectWithdraw() {
         let param = {

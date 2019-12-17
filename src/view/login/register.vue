@@ -3,7 +3,7 @@
     <!-- <van-nav-bar left-arrow @click-left="_routerBack" title="登录" fixed :z-index="10"></van-nav-bar> -->
     <div class="nav-con align-center login-con" :style="{'background-image':'url(static/img/login/login_back.png)'}">
       <div class="top-area">
-        <van-image src="static/img/login/vant_logo.png" class="top-logo"></van-image>
+        <van-image src="../../../../static/img/微信图片_20191217153519.png" class="top-logo"></van-image>
         <div>账号注册</div>
       </div>
       <!--用户名密码登录-->
