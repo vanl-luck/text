@@ -7,26 +7,58 @@
       <div class="van-card__origin-price">¥ 10.00</div>   </van-cell> -->
 
       <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'>
-        <div slot="tags" v-if="index==0">
-          <p>　招商直推20%间推3% 　　医美终端20%-间推3%</p>
-          <p>　优享积分45%</p>
-          <p>《神奇性格色彩》　课程 　《现代医美专业》课程</p>
-          <p>《陈添良风水面相》课程 　　慈善基金会公益活动</p>
+        <div slot="tags" v-if="index==0" style="display:flex">
+          <div style="flex:1">
+            <p>优享积分45%</p>
+            <p>招商直推20%间推3%</p>
+            <p>医美终端20%间推3%</p>
+            <p>慈善基金会公益活动</p>
+          </div>
+          <div style="flex:1">
+            <p>《陈添良风水面相》课程</p>
+            <p>《神奇性格色彩》　课程</p>
+            <p>《现代医美专业》　课程</p>
+          </div>
+
         </div>
-        <div slot="tags" v-if="index==1">
-          <p>招商直推30%间推8% 　　医美终端30%间推3%</p>
-          <p>vip团队10%  　　 　　 　　 　vip团队5%</p>
-          <p>优享积分50% 　　 　　《百万医美》专业课程</p>
-          <p>商学院体系价值39800 　6天5晚西双版纳豪华游</p>
-          <p>赠送vip名额1位 　　 　　慈善基金会公益活动</p>
+        <div slot="tags" v-if="index==1" style="display:flex">
+                <div style="flex:1">
+            <p>招商直推30%间推8%</p>
+            <p>医美终端30%间推3%</p>
+            <p>vip团队10%</p>
+            <p>vip团队5%</p>
+            <p>优享积分50%</p>
+          </div>
+          <div style="flex:1">
+            <p>《百万医美》专业课程</p>
+            <p>商学院体系价值39800</p>
+            <p>6天5晚西双版纳豪华游</p>
+            <p>赠送vip名额1位</p>
+            <p>慈善基金会公益活动</p>
+          </div>
         </div>
-                <div slot="tags" v-if="index==2">
-          <p>招商直推40%间推8%　　代言人团队10%,vip团队20%</p>
-          <p>医美终端40%间推3% 　　代言人团队5%,vip团队10%</p>
+        <div slot="tags" v-if="index==2" style="display:flex">
+          <div style="flex:1">
+          <p>招商直推40%间推8%</p>
+          <p>代言人团队10%,vip团队20%</p>
+          <p>优享积分55%</p>
+          <p>慈善基金会公益活动</p>
+          <p>商学院体系全部课程价值39800</p>
+
+          </div>
+          <div style="flex:1">
+          <p>医美终端40%间推3%</p>
+          <p>代言人团队5%,vip团队10%</p>
+          <p>6天5夜泰国豪华游</p>
+          <p>赠送vip名额5位</p>
+          <p>《百万医美》专业课程</p>
+
+          </div>
+          <!-- <p>医美终端40%间推3% 　　代言人团队5%,vip团队10%</p>
           <p>优享积分55%　　　　　　　　《百万医美》专业课程</p>
           <p>商学院体系全部课程价值39800　　6天5夜泰国豪华游</p>
           <p>深圳游艇会vip身份1一名　　　　　　赠送vip名额5位</p>
-          <p>慈善基金会公益活动</p>
+          <p>慈善基金会公益活动</p> -->
         </div>
         <div slot="footer">
           <van-button style="width: 75px;" size="mini" @click="pay(item.id)">点击支付</van-button>
