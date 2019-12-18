@@ -79,7 +79,6 @@ router.beforeEach((to, from, next) => {
   // 保存个路由来路，以备不时之需
   // .setItem('fromPage', from.name);
   let token = localStorage.getItem("user")
-  console.log(token);
 if (!token && to.path !== '/LoginPage' && to.path !== "/register") {
     next('/LoginPage');
 } else {
