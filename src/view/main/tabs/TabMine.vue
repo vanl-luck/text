@@ -202,8 +202,9 @@
             rewardIntegral: this.num.rewardIntegral
           })
         } else {
+            this._routePush('aboutUs')
             // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://localhost:8023/#/main/products&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
-          this._showToast('功能暂未开放');
+          // this._showToast('功能暂未开放');
         }
       },
       onMessageClick() {

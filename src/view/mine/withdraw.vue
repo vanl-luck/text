@@ -7,7 +7,7 @@
       <van-list v-model="isUpLoading" :finished="upFinished" finished-text="没有更多了" @load="onLoad">
         <van-cell v-for="(item,index) in lineUp" :key="item.id">
           <template slot-scope="scpoed">
-            <div style="display:flex;font-size:12px;">
+            <div class="lineColor" :style="id==item.userId? backgroundColor:''">
 
               <div style="flex:1;margin-left: 20px;">
                 <div>
@@ -35,7 +35,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="item.integralState==1"   style="text-align:center;margin-right:5px;margin-right: 30px;margin-top: 5px;">
+            <div v-if="item.integralState==1"   style="text-align:center;margin-right:5px;margin-right: 30px;">
               <van-button type="primary" size="small" @click="onClickButtonSubmit(item.amount,item.id)"
                 v-if="id==item.userId">提现
               </van-button>
@@ -87,6 +87,7 @@
 
     data() {
       return {
+        backgroundColor:'background: antiquewhite;',
         columns: [],
         list: [],
         isUpLoading: false,
@@ -255,5 +256,7 @@
     box-shadow: 3px 3px 3px 0px #ccc;
     margin: 0px 5px;
   }
-
+.lineColor{
+  display:flex;font-size:12px;
+}
 </style>

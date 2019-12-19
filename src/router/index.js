@@ -22,6 +22,7 @@ const addMine = r => require.ensure([], () => r(require('../view/mine/addMine'))
 const selectExamineRecord = r => require.ensure([], () => r(require('../view/mine/selectExamineRecord')), 'selectExamineRecord');
 
 const withdraw = r => require.ensure([], () => r(require('../view/mine/withdraw')), 'withdraw');
+const aboutUs = r => require.ensure([], () => r(require('../view/mine/aboutUs')), 'aboutUs');
 
 const MessagePage = r => require.ensure([], () => r(require('../view/mine/MessagePage')), 'MessagePage');
 const MessageDetail = r => require.ensure([], () => r(require('../view/mine/MessageDetail')), 'MessageDetail');
@@ -57,6 +58,7 @@ const routes = [
   {name: 'consume', component: consume},
   {name: 'detail', component: detail},
   {name: 'selectExamineRecord', component: selectExamineRecord},
+  {name: 'aboutUs', component: aboutUs},
   
   {name: 'ForumPage', component: ForumPage},
   {name: 'addMine', component: addMine},  
