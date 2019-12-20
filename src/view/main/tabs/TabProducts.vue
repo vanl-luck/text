@@ -14,12 +14,12 @@
       <div class="imgBackground" style="">
         <div >招商代理</div>
       </div>
-    <div style="display:flex">
+    <div >
       <div v-for="(item,index) in allProducts" :key="index" style="">
         <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'
           :style="backgroundColor[index]">
-          <div slot="tags" v-if="index==0" style="">
-            <p>附赠:5盒熬夜医美面膜</p>
+          <div slot="tags" v-if="index==0" style="display:flex">
+            <p style="color:#69696a">附赠:5盒熬夜医美面膜</p>
             <!-- <div style="flex:1">
             <p>优享积分45%</p>
             <p>招商直推20%间推3%</p>
@@ -32,8 +32,8 @@
             <p>《现代医美专业》　课程</p>
           </div> -->
           </div>
-          <div slot="tags" v-if="index==1" style="">
-            <p>附赠:30盒熬夜医美面膜</p>
+          <div slot="tags" v-if="index==1" style="display:flex">
+            <p style="color:#69696a">附赠:30盒熬夜医美面膜</p>
             <!-- <div style="flex:1">
             <p>招商直推30%间推8%</p>
             <p>医美终端30%间推3%</p>
@@ -49,8 +49,8 @@
             <p>慈善基金会公益活动</p>
           </div> -->
           </div>
-          <div slot="tags" v-if="index==2" style="">
-            <p>附赠:100盒熬夜医美面膜</p>
+          <div slot="tags" v-if="index==2" style="display:flex">
+            <p style="color:#69696a">附赠:100盒熬夜医美面膜</p>
             <!-- <div style="flex:1">
           <p>招商直推40%间推8%</p>
           <p>代言人团队10%,vip团队20%</p>
@@ -125,9 +125,9 @@
     data() {
       return {
         imgPattern:['../../../../static/img/zhaoshang/1.png','../../../../static/img/zhaoshang/2.png','../../../../static/img/zhaoshang/3.png','../../../../static/img/zhaoshang/4.png','../../../../static/img/zhaoshang/5.png','../../../../static/img/zhaoshang/6.png'],
-        backgroundColor: ['background: linear-gradient(#f4f9f7, #c9ddd8);flex:1'
+        backgroundColor: ['background: linear-gradient(#f4f9f7, #c9ddd8);flex:1;color:aquamarine'
 
-          , 'background: linear-gradient(#d9d9d9, #9e9e9e);flex:1', 'background: linear-gradient(#f4ec2b, #ecd900,#d19400);flex:1'
+          , 'background: linear-gradient(#d9d9d9, #9e9e9e);flex:1;color: beige;', 'background: linear-gradient(#f4ec2b, #ecd900,#d19400);flex:1;color: darkgray;'
         ],
         price: [2980.00, 20000.00, 40000.00],
         images: [
@@ -343,7 +343,7 @@
 
 <style scoped lang="scss">
 .imgBackground{
-  background:url('../../../../static/img/product/Snipaste_2019-12-19_15-25-30.png');margin-top:15px;height:80px;
+  background:url('../../../../static/img/product/Snipaste_2019-12-19_15-25-30.png');margin-top:5px;height:80px;
   div{
     line-height: 80px;
     text-align: center;
@@ -352,7 +352,7 @@
   }
 }
   .van-card__footer {
-    text-align: center;
+    text-align: right;
   }
 
   .product {
