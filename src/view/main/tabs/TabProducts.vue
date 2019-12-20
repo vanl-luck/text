@@ -1,19 +1,19 @@
 <template>
-  <div style="background:#f0f0f0">
-    <van-swipe :autoplay="3000" style="width:100%;">
+  <div class="bord">
+    <!-- <van-swipe :autoplay="3000" style="width:100%;">
       <van-swipe-item v-for="(image, index) in images" :key="index">
         <div class="img-responsive">
 
         <img v-lazy="image" />
         </div>
       </van-swipe-item>
-    </van-swipe>
-    <van-notice-bar
+    </van-swipe> -->
+    <!-- <van-notice-bar
       text="安美汇整合了由上海、广州、深圳、福建、贵阳、惠州、广西、四川、在内百余家医院共同开发建设，迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准；快速成为中国美业生态链第一平台；"
-      left-icon="volume-o" />
-      <div class="imgBackground" style="">
-        <div >招商代理</div>
-      </div>
+      left-icon="volume-o" /> -->
+      <!-- <div class="imgBackground" style="">
+        <div >招商剖析</div>
+      </div> -->
     <div >
       <div v-for="(item,index) in allProducts" :key="index" style="">
         <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'
@@ -79,12 +79,12 @@
       </div>
 
     </div>
-           <div class="imgBackground" style="">
+           <!-- <div class="imgBackground" style="">
         <div >模式剖析</div>
       </div>
       <div  class="img-responsive" v-for="(item,index) in imgPattern" :key="index">
         <img :src="item" alt="">
-      </div>
+      </div> -->
     <!-- </span> -->
 
     <!-- <div class="top-fixed">

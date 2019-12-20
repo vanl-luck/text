@@ -1,36 +1,48 @@
 <template>
 
   <div class="pages-tables " id="pages-tables">
-<div >
+    <div>
 
-    <van-nav-bar left-arrow @click-left="_routerBack" title="我的会员" :z-index="10"></van-nav-bar>
+      <van-nav-bar left-arrow @click-left="_routerBack" title="我的会员" :z-index="10"></van-nav-bar>
 
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
 
-      <van-search v-model="name" placeholder="请输入搜索会员名" show-action shape="round" @search="onSearch">
-        <div slot="action" @click="onSearch">搜索</div>
-      </van-search>
+        <van-search v-model="name" placeholder="请输入搜索会员名" show-action shape="round" @search="onSearch">
+          <div slot="action" @click="onSearch">搜索</div>
+        </van-search>
 
-      <div v-for="(item,index) in yList" 　v-if="yList.length!=0">
+        <div v-for="(item,index) in yList" 　v-if="yList.length!=0">
 
-        <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png">
-          <div slot="tags">
-            <div>用户名：{{item.userName}} <span style="color:red">({{item.memberName}})</span> </div>
-            <div>加入时间：{{item.registrationTime}} </div>
-            <div>手机号：{{item.phone}} </div>
-            <div>消费额：{{item.sumAmount}} </div>
-          </div>
-        </van-card>
-      </div>
-      <div v-else>
-        <span class="table__empty-text">
-          <p style="color: #909399;">暂无数据</p>
-        </span>
-      </div>
-    </van-pull-refresh>
+          <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png">
+            <div slot="tags">
+              <div>用户名：{{item.userName}} <span style="color:red">({{item.memberName}})</span> </div>
+              <div>加入时间：{{item.registrationTime}} </div>
+              <div>手机号：{{item.phone}} </div>
+              <div>消费额：{{item.sumAmount}} </div>
+              <div v-for="(domain,index) in item.list">
+                <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png"
+                  style="margin-left: -117px;">
+                  <div slot="tags">
+                    <div>用户名：{{domain.userName}} <span style="color:red">({{domain.memberName}})</span> </div>
+                    <div>加入时间：{{domain.registrationTime}} </div>
+                    <div>手机号：{{domain.phone}} </div>
+                    <div>消费额：{{domain.sumAmount}} </div>
+                  </div>
+                </van-card>
+              </div>
+            </div>
+
+          </van-card>
+        </div>
+        <div v-else>
+          <span class="table__empty-text">
+            <p style="color: #909399;">暂无数据</p>
+          </span>
+        </div>
+      </van-pull-refresh>
+    </div>
+
   </div>
-
-</div>
 </template>
 <script>
   import {
@@ -86,7 +98,7 @@
     },
     methods: {
       onRefresh() {
-        this.name=''
+        this.name = ''
         setTimeout(() => {
           this.$toast('刷新成功');
           this.isLoading = false;
@@ -115,7 +127,7 @@
       //       _self.dtWinNumberInfos = _self.dtWinNumberInfos.concat(rows)
       //     }
       //   }
-  
+
       // },
       tableOut(value) {
 
@@ -165,19 +177,23 @@
     -webkit-overflow-scrolling: touch; // ios滑动顺畅
     position: relative;
   }
-  .van-card__header{
-        border: 1px solid #e4e4e4;
-        box-shadow: 3px 3px 3px 0px #ccc;
-        margin:0px 5px;
+
+  .van-card__header {
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 3px 3px 0px #ccc;
+    margin: 0px 5px;
   }
-.van-card{
-  .van-card__thumb{
-    margin:10px;
+
+  .van-card {
+    .van-card__thumb {
+      margin: 10px;
+    }
+
+    .van-card__content {
+      margin: 10px
+    }
   }
-  .van-card__content{
-    margin:10px
-  }
-}
+
   .rolling-table {
     height: 100%;
     font-size: 0.28rem;
