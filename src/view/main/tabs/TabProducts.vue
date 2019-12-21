@@ -1,13 +1,6 @@
 <template>
   <div class="bord">
-    <!-- <van-swipe :autoplay="3000" style="width:100%;">
-      <van-swipe-item v-for="(image, index) in images" :key="index">
-        <div class="img-responsive">
 
-        <img v-lazy="image" />
-        </div>
-      </van-swipe-item>
-    </van-swipe> -->
     <!-- <van-notice-bar
       text="安美汇整合了由上海、广州、深圳、福建、贵阳、惠州、广西、四川、在内百余家医院共同开发建设，迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准；快速成为中国美业生态链第一平台；"
       left-icon="volume-o" /> -->

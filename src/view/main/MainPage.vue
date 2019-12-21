@@ -58,12 +58,12 @@
             name: 'tab_products',
             to: "products"
           },
-          // {
-          //   active: 'main_tab_7.png',
-          //   normal: 'main_tab_6.png',
-          //   name: 'tab_discovery',
-          //   to: "discover"
-          // },
+          {
+            active: 'main_tab_7.png',
+            normal: 'main_tab_6.png',
+            name: 'tab_discovery',
+            to: "discover"
+          },
           {
             active: 'main_tab_1.png',
             normal: 'main_tab_8.png',
