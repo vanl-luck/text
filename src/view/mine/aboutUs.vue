@@ -24,7 +24,7 @@
         </p>
         <div class="img-responsive">
 
-        <img src="../../../static/img/product/微信图片_20191219102916.jpg" alt="">
+        <!-- <img src="../../../static/img/product/微信图片_20191219102916.jpg" alt=""> -->
            <img src="../../../static/img/product/微信图片_20191219103811.jpg" alt="">
         </div>
       </p>

@@ -53,7 +53,7 @@
 
         <!-- <div v-for="domain in listSelect"> -->
 
-        <van-picker show-toolbar title="请选择提现金额" :columns="columns" @cancel="cancel" @confirm="confirm" />
+        <van-picker show-toolbar title="请选择提现金额" v-model="amount" :columns="columns" @cancel="cancel" @confirm="confirm" />
         <!-- {{domain}} -->
         <!-- </div> -->
         <!-- <van-datetime-picker type="date"  @confirm="confirm"
@@ -105,15 +105,17 @@
         buttonShare: '',
         show: false,
         listSelect: [],
-        id: ''
+        id: '',
+        amount:''
 
       }
     },
     methods: {
-      confirm() {
-        this.show = false;
+      // confirm() {
+      //   console.log(1);
+      //   this.show = false;
 
-      },
+      // },
       cancel() {
         this.show = false;
       },
@@ -135,11 +137,10 @@
             id = item.id
           }
         })
-
         // if(this.listSelect.map(item=>{})){
 
         // }
-        if(this.amount){
+        if(this.Tqu){
    
         let param = {
           userId: JSON.parse(localStorage.getItem("user")).id,
@@ -186,6 +187,7 @@
         })
       },
       confirm(value) {
+        console.log(value);
         this.show = false
         this.Tqu = value
       },
