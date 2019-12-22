@@ -308,7 +308,7 @@
 
   .amount-con {
 
-    background: #5d5f5c;
+    background: #d35562;
     display: flex;
     border-radius: 30px;
     margin-top: -20px;
@@ -333,7 +333,7 @@
   }
 
   .top-nav {
-    background-color: #5d5f5c;
+    background-color: #d35562;
     position: fixed;
     height: 50px;
     z-index: 10;
