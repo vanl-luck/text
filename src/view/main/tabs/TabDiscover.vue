@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="公司" fixed :z-index="10"></van-nav-bar>
+    <van-nav-bar title="甄美纪医疗美容连锁机构" fixed :z-index="10"></van-nav-bar>
 
     <div class="nav-con">
       <!--顶部图片-->
@@ -21,14 +21,21 @@
             <!-- <div class="commu-right">2个活动奖励</div> -->
           </div>
           <div class="commu-mid">
-            <div class="commu-title">甄美纪：甄美纪医疗美容连锁集团,从无到</div>
+            <div class="commu-title">甄美纪·安美汇</div>
             <div class="light-txt commu-txt">
-              有,从小到大,凭借着先进的经营管
-              理模式,专业的策划团队、强大的专
-              家团队和人性化的服务,已成为西南
-              较大的整形美容连锁集团。集团总部
-              设立在亚洲金融中心——上海,经过
-              几年的快速发展...
+              <p>1: 资本背景及保障</p>
+              <p>
+                安美汇，是全国连锁医美机构“甄美纪”的旗下品牌，安美汇通过“平台赋能、品牌增信、全网合作、品质运营”模式，与中信集团旗下子公司签约独家合作，配套8000万固定资产包括60余套高材生人才公寓；同时，安美汇与中国平安保险达成战略合作，并获得全国唯一指定授权企业，授权安美汇为“医疗美容保险投保受理.鉴定.理赔”的中国唯一标准执行企业，其联合了由北京、上海、广州、深圳、贵阳、惠州、桂林、成都等在内103家甄美纪连锁机构共同开发建设。
+              </p>
+              <p>2: 资金安全</p>
+              <p> 安美汇与广东发展银行总行达成战略合作，委托广发银行为线上产业链上下游唯一支付结算机构和指定资金托管业务机构；并为用户提供信用卡办理业务，联合发卡，商业担保授信等。</p>
+
+              <p>3: 团队优势</p>
+              <p>甄美纪迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的安美汇商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准。</p>
+              <p>4: 独特监控</p>
+              <p>甄美纪采用【0客诉极致化管控体系】严格把关出品质量，规范手术流程，以“规范行业标准，保障求美者权益”为使命，为行业打造一条健康的医美生态链。</p>
+
+
             </div>
           </div>
           <!-- <van-button type="danger" round class="commu-btn" @click="onCommuClick">进入社区</van-button> -->
@@ -36,7 +43,7 @@
       </div>
       <!--下部应用入口-->
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">美容连锁</div>
-      <van-grid :border="false" :column-num="2" :gutter="10">
+      <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片1.png" />
         </van-grid-item>
@@ -53,7 +60,7 @@
           <van-image src="../../../../static/img/chain/图片5.png" />
         </van-grid-item>
       </van-grid>
-          <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">师资力量</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">师资力量</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片6.png" />
@@ -62,21 +69,21 @@
           <van-image src="../../../../static/img/chain/图片7.png" />
         </van-grid-item>
       </van-grid>
-            <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">王牌项目</div>
+      <!-- <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">王牌项目</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片8.png" />
         </van-grid-item>
-       
+        -->
       </van-grid>
-              <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医院环境</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医院环境</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片9.png" />
         </van-grid-item>
-      
+
       </van-grid>
-            <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">服务体系</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">服务体系</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片15.png" />
@@ -84,44 +91,44 @@
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片16.png" />
         </van-grid-item>
-          <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片17.png" />
         </van-grid-item>
-          <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片18.png" />
         </van-grid-item>
-          <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片19.png" />
         </van-grid-item>
-          <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片20.png" />
         </van-grid-item>
-          <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片21.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片22.png" />
         </van-grid-item>
-     
+
       </van-grid>
-                     <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">十大优势</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">十大优势</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片10.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片11.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片12.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片13.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
           <van-image src="../../../../static/img/chain/图片14.png" />
         </van-grid-item>
-           <van-grid-item>
+        <van-grid-item>
         </van-grid-item>
       </van-grid>
       <!-- <van-row class="line2-all">

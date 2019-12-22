@@ -4,81 +4,63 @@
     <!-- <van-notice-bar
       text="安美汇整合了由上海、广州、深圳、福建、贵阳、惠州、广西、四川、在内百余家医院共同开发建设，迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准；快速成为中国美业生态链第一平台；"
       left-icon="volume-o" /> -->
-      <!-- <div class="imgBackground" style="">
+    <!-- <div class="imgBackground" style="">
         <div >招商剖析</div>
       </div> -->
-    <div >
-      <div v-for="(item,index) in allProducts" :key="index" style="">
-        <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName" :origin-price='price[index]'
-          :style="backgroundColor[index]">
-          <div slot="tags" v-if="index==0" style="display:flex">
-            <p style="color:#69696a">附赠:5盒熬夜医美面膜</p>
-            <!-- <div style="flex:1">
-            <p>优享积分45%</p>
-            <p>招商直推20%间推3%</p>
-            <p>医美终端20%间推3%</p>
-            <p>慈善基金会公益活动</p>
+    <div class="img-responsive">
+      <img src="../../../../static/img/zhaoshang/WechatIMG1730.jpeg" alt="">
+    </div>
+    <div>
+      <div v-for="(item,index) in allProducts" :key="index" style="color:#69696a">
+        <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName+'('+text[index]+')'" :origin-price='price[index]'>
+          <div slot="tags" v-if="index==0" style="display:flex;">
+            <div style="flex:1">
+              <p>招商奖励20%</p>
+              <p>5盒熬夜医美面膜</p>
+            </div>
+            <div style="flex:1">
+              <p>项目奖励20%</p>
+
+            </div>
           </div>
-          <div style="flex:1">
-            <p>《陈添良风水面相》课程</p>
-            <p>《神奇性格色彩》　课程</p>
-            <p>《现代医美专业》　课程</p>
-          </div> -->
-          </div>
-          <div slot="tags" v-if="index==1" style="display:flex">
-            <p style="color:#69696a">附赠:30盒熬夜医美面膜</p>
-            <!-- <div style="flex:1">
-            <p>招商直推30%间推8%</p>
-            <p>医美终端30%间推3%</p>
-            <p>vip团队10%</p>
-            <p>vip团队5%</p>
-            <p>优享积分50%</p>
-          </div>
-          <div style="flex:1">
-            <p>《百万医美》专业课程</p>
-            <p>商学院体系价值39800</p>
-            <p>6天5晚西双版纳豪华游</p>
-            <p>赠送vip名额1位</p>
-            <p>慈善基金会公益活动</p>
-          </div> -->
+          <div slot="tags" v-if="index==1" style="display:flex;">
+            <div style="flex:1">
+              <p>招商直推30% 8%</p>
+              <p>赠送vip名额1位</p>
+              <p>时尚芭莎独家赞助口红组合</p>
+
+            </div>
+            <div style="flex:1">
+              <p>项目奖励30% 3%</p>
+              <p>20盒熬夜医美面膜</p>
+            </div>
           </div>
           <div slot="tags" v-if="index==2" style="display:flex">
-            <p style="color:#69696a">附赠:100盒熬夜医美面膜</p>
-            <!-- <div style="flex:1">
-          <p>招商直推40%间推8%</p>
-          <p>代言人团队10%,vip团队20%</p>
-          <p>优享积分55%</p>
-          <p>慈善基金会公益活动</p>
-          <p>商学院体系全部课程价值39800</p>
+            <div style="flex:1">
+          <p>招商奖励: 40%  8% </p>
+          <p>代言人团队:10%</p>
+          <p>时尚芭莎口红组合2套</p>
+          <p>高层定制豪华游</p>
           </div>
           <div style="flex:1">
-          <p>医美终端40%间推3%</p>
-          <p>代言人团队5%,vip团队10%</p>
-          <p>6天5夜泰国豪华游</p>
-          <p>赠送vip名额5位</p>
-          <p>《百万医美》专业课程</p> -->
-            <!-- </div> -->
-            <!-- <p>医美终端40%间推3% 　　代言人团队5%,vip团队10%</p>
-          <p>优享积分55%　　　　　　　　《百万医美》专业课程</p>
-          <p>商学院体系全部课程价值39800　　6天5夜泰国豪华游</p>
-          <p>深圳游艇会vip身份1一名　　　　　　赠送vip名额5位</p>
-          <p>慈善基金会公益活动</p> -->
+          <p>项目奖励: 40%  2%  </p>
+          <p>代言人团队: 5%</p>
+          <p>50盒熬夜修复医美面膜</p>
+          <p>5个vip名额</p>
+          </div>
           </div>
           <div slot="footer">
             <van-button style="width: 75px;" size="mini" @click="pay(item.id)">点击加入</van-button>
-          </div>  
+          </div>
         </van-card>
-    
+
       </div>
 
     </div>
-           <!-- <div class="imgBackground" style="">
-        <div >模式剖析</div>
-      </div>
-      <div  class="img-responsive" v-for="(item,index) in imgPattern" :key="index">
-        <img :src="item" alt="">
+    <!-- <div class="imgBackground" style="">
       </div> -->
-    <!-- </span> -->
+
+    <!-- </span>
 
     <!-- <div class="top-fixed">
       <van-nav-bar :title="$t('tab_products')" fixed :z-index="10"></van-nav-bar>
@@ -117,15 +99,20 @@
     name: "tab-products",
     data() {
       return {
-        imgPattern:['../../../../static/img/zhaoshang/1.png','../../../../static/img/zhaoshang/2.png','../../../../static/img/zhaoshang/3.png','../../../../static/img/zhaoshang/4.png','../../../../static/img/zhaoshang/5.png','../../../../static/img/zhaoshang/6.png'],
+        text:['客户门槛','代言人门槛','私董门槛'],
+        imgPattern: ['../../../../static/img/zhaoshang/1.png', '../../../../static/img/zhaoshang/2.png',
+          '../../../../static/img/zhaoshang/3.png', '../../../../static/img/zhaoshang/4.png',
+          '../../../../static/img/zhaoshang/5.png', '../../../../static/img/zhaoshang/6.png'
+        ],
         backgroundColor: ['background: linear-gradient(#f4f9f7, #c9ddd8);flex:1;color:aquamarine'
 
-          , 'background: linear-gradient(#d9d9d9, #9e9e9e);flex:1;color: beige;', 'background: linear-gradient(#f4ec2b, #ecd900,#d19400);flex:1;color: darkgray;'
+          , 'background: linear-gradient(#d9d9d9, #9e9e9e);flex:1;color: beige;',
+          'background: linear-gradient(#f4ec2b, #ecd900,#d19400);flex:1;color: darkgray;'
         ],
         price: [2980.00, 20000.00, 40000.00],
         images: [
           '../../../../static/img/anmeihui/轮播1.png',
-         '../../../../static/img/anmeihui/2.png'
+          '../../../../static/img/anmeihui/2.png'
         ],
         img: [
           '../../../../static/img/Snipaste_2019-12-10_17-43-06.png',
@@ -335,15 +322,18 @@
 </script>
 
 <style scoped lang="scss">
-.imgBackground{
-  background:url('../../../../static/img/product/Snipaste_2019-12-19_15-25-30.png');margin-top:5px;height:80px;
-  div{
-    line-height: 80px;
-    text-align: center;
-    color: #164273;
-    font-size:30px;
+  .imgBackground {
+    background: url('../../../../static/img/zhaoshang/WechatIMG1730.jpeg');
+    margin-top: 5px;
+    height: 80px;
+    // div{
+    //   line-height: 80px;
+    //   text-align: center;
+    //   color: #164273;
+    //   font-size:30px;
+    // }
   }
-}
+
   .van-card__footer {
     text-align: right;
   }
@@ -376,6 +366,10 @@
       font-weight: 500;
       line-height: 20px;
     }
+  }
+
+  .backImg {
+    // background:url('../../../../static/img/zhaoshang/WechatIMG1730.jpeg') 
   }
 
   .prod-item {
@@ -432,10 +426,12 @@
       }
     }
   }
-.img-responsive img {
+
+  .img-responsive img {
     width: 100%;
     height: inherit;
   }
+
   .navbar-con {
     .sort-all {
       padding-top: 0;

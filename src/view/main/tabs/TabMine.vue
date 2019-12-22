@@ -2,15 +2,15 @@
   <div>
     <!--顶部导航-->
     <div class="top-nav ">
-      <van-image lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img" ></van-image>
+      <van-image lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img"></van-image>
       <div class="top-right">
         <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
       </div>
     </div>
     <!--下部内容-->
-    <div class="nav-con "style="background: #f0f0f0;" v-if="">
+    <div class="nav-con " style="background: #f0f0f0;" v-if="">
       <div class="amount-con " style="display:flex;">
-        <van-image  style="left:30px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
+        <van-image style="left:30px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
         <!-- <van-image style="width:100px;left:30px;" lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img" fit="cover">
         </van-image> -->
         <div style="margin-left:30px;">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!--代收收益-->
-      <van-row class="receive-all" >
+      <van-row class="receive-all">
         <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.rewardIntegral,name:'奖励积分'}});">
           <div>{{num.rewardIntegral}}</div>
           <div class="light-txt receive-ins">奖励积分</div>
@@ -40,17 +40,17 @@
       <!--下方应用入口-->
       <div>
 
-      <van-row class="app-con">
-        <van-col span="8" v-for="(it,idx) in bottomApps" :key="idx" class="app-item click-box">
-          <div @click="pushIdx(it.id)">
-            <van-image v-if="it.flag" :src="'static/img/mine/'+it.flag" class="flag-icon"></van-image>
-            <div>
-              <van-image :src="'static/img/mine/'+it.icon" class="app-icon"></van-image>
-              <div class="app-text light-txt">{{it.title}}</div>
+        <van-row class="app-con">
+          <van-col span="8" v-for="(it,idx) in bottomApps" :key="idx" class="app-item click-box">
+            <div @click="pushIdx(it.id)">
+              <van-image v-if="it.flag" :src="'static/img/mine/'+it.flag" class="flag-icon"></van-image>
+              <div>
+                <van-image :src="'static/img/mine/'+it.icon" class="app-icon"></van-image>
+                <div class="app-text light-txt">{{it.title}}</div>
+              </div>
             </div>
-          </div>
-        </van-col>
-      </van-row>
+          </van-col>
+        </van-row>
       </div>
     </div>
   </div>
@@ -201,10 +201,12 @@
           this._routePush('selectExamineRecord', {
             rewardIntegral: this.num.rewardIntegral
           })
-        } else {
-            this._routePush('aboutUs')
-            // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://localhost:8023/#/main/products&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
-          // this._showToast('功能暂未开放');
+        } else if(id==8){
+          this._routePush('aboutUs')
+        }else{
+          window.location.href =
+            'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
+
         }
       },
       onMessageClick() {
@@ -284,7 +286,7 @@
 
   .receive-all {
     box-shadow: 3px 3px 3px 1px #ccc;
-position: relative;
+    position: relative;
     top: -10px;
     /* border: 1px solid #e2ca9c; */
     border-radius: 5px;
@@ -305,8 +307,8 @@ position: relative;
   }
 
   .amount-con {
-   
-        background: #d85a63;
+
+    background: #5d5f5c;
     display: flex;
     border-radius: 30px;
     margin-top: -20px;
@@ -317,7 +319,7 @@ position: relative;
     padding-bottom: 20px;
 
     .amount-ins {
-      color:#f0f0f0;
+      color: #000000;
       margin-left: 20px;
       text-align: left;
       font-size: 14px;
@@ -331,7 +333,7 @@ position: relative;
   }
 
   .top-nav {
-    background-color: #d85a63;
+    background-color: #5d5f5c;
     position: fixed;
     height: 50px;
     z-index: 10;
@@ -359,7 +361,9 @@ position: relative;
       border-radius: 5px;
     }
   }
-.main-router-view{
-  background: #f0f0f0;
-}
+
+  .main-router-view {
+    background: #f0f0f0;
+  }
+
 </style>
