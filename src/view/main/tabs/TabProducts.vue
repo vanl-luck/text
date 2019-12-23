@@ -13,7 +13,7 @@
     <div>
       <div v-for="(item,index) in allProducts" :key="index" style="color:#69696a">
         <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName+'('+text[index]+')'" :origin-price='price[index]'>
-          <div slot="tags" v-if="index==0" style="display:flex;">
+          <!-- <div slot="tags" v-if="index==0" style="display:flex;">
             <div style="flex:1">
               <p>招商奖励20%</p>
               <p>5盒熬夜医美面膜</p>
@@ -37,18 +37,7 @@
           </div>
           <div slot="tags" v-if="index==2" style="display:flex">
             <div style="flex:1">
-          <p>招商奖励: 40%  8% </p>
-          <p>代言人团队:10%</p>
-          <p>时尚芭莎口红组合2套</p>
-          <p>高层定制豪华游</p>
-          </div>
-          <div style="flex:1">
-          <p>项目奖励: 40%  2%  </p>
-          <p>代言人团队: 5%</p>
-          <p>50盒熬夜修复医美面膜</p>
-          <p>5个vip名额</p>
-          </div>
-          </div>
+          <p> -->
           <div slot="footer">
             <van-button style="width: 75px;" size="mini" @click="pay(item.id)">点击加入</van-button>
           </div>
