@@ -2,7 +2,7 @@
   <div>
     <!--顶部导航-->
     <div class="top-nav ">
-      <van-image lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img"></van-image>
+      <van-image lazy-load style="width:32.5px;height:27.4px" src="../../../../static/img/微信图片_20191217153519.png" class="head-img"></van-image>
       <div class="top-right">
         <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
       </div>
@@ -10,14 +10,20 @@
     <!--下部内容-->
     <div class="nav-con " style="background: #f0f0f0;" v-if="">
       <div class="amount-con " style="display:flex;">
-        <van-image style="left:30px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
-        <!-- <van-image style="width:100px;left:30px;" lazy-load src="../../../../static/img/微信图片_20191217153519.png" class="head-img" fit="cover">
-        </van-image> -->
+        <van-image style="left:30px;    width: 97.5px;height: 68.5px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
+
         <div style="margin-left:30px;">
           <div class="light-txt amount-ins">名字:{{user.userName}}</div>
           <div class="light-txt amount-ins">手机:{{user.phone}}</div>
           <div class="light-txt amount-ins">级别:{{user.memberName}}</div>
         </div>
+        <!-- <div class="img-div">
+
+
+          <van-image style="width:100px;right:10px" lazy-load
+            src="../../../../static/img/product/微信图片_20191223085800.jpg" class="head-img" fit="cover">
+          </van-image>
+        </div> -->
       </div>
       <!--代收收益-->
       <van-row class="receive-all">
@@ -39,7 +45,6 @@
 
       <!--下方应用入口-->
       <div>
-
         <van-row class="app-con">
           <van-col span="8" v-for="(it,idx) in bottomApps" :key="idx" class="app-item click-box">
             <div @click="pushIdx(it.id)">
@@ -51,6 +56,9 @@
             </div>
           </van-col>
         </van-row>
+      </div>
+      <div class="img-responsive">
+        <img src="../../../../static/img/product/微信图片_20191223085800.jpg" alt="">
       </div>
     </div>
   </div>
@@ -201,9 +209,9 @@
           this._routePush('selectExamineRecord', {
             rewardIntegral: this.num.rewardIntegral
           })
-        } else if(id==8){
+        } else if (id == 8) {
           this._routePush('aboutUs')
-        }else{
+        } else {
           window.location.href =
             'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
 
@@ -221,6 +229,21 @@
 </script>
 
 <style scoped lang="scss">
+  // .img-div {
+  //   position: relative;
+  //   right: -5%;
+  //   width: 100px;
+  //   height: 100px;
+  //   top: 10px;
+
+  //   img {
+  //     width: auto;
+  //     height: auto;
+  //     max-width: 100%;
+  //     max-height: 100%
+  //   }
+  // }
+
   .app-con {
     margin: 0px 20px;
 
@@ -246,6 +269,16 @@
         width: 36px;
         height: 36px;
       }
+    }
+  }
+
+  .img-responsive {
+
+    margin: 10px 20px;
+
+    img {
+      width: 100%;
+      height: inherit;
     }
   }
 
