@@ -34,8 +34,6 @@
               <p>甄美纪迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的安美汇商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准。</p>
               <p>4: 独特监控</p>
               <p>甄美纪采用【0客诉极致化管控体系】严格把关出品质量，规范手术流程，以“规范行业标准，保障求美者权益”为使命，为行业打造一条健康的医美生态链。</p>
-
-
             </div>
           </div>
           <!-- <van-button type="danger" round class="commu-btn" @click="onCommuClick">进入社区</van-button> -->
@@ -43,7 +41,6 @@
       </div>
       <!--下部应用入口-->
       <div>
-
       <video-player  class="video-player vjs-custom-skin"
      ref="videoPlayer"
      :playsinline="true"
@@ -74,8 +71,18 @@
      :playsinline="true"
      :options="playerOptions5"
 ></video-player>
+  <!-- <video-player  class="video-player vjs-custom-skin"
+     ref="videoPlayer"
+     :playsinline="true"
+     :options="playerOptions6"
+></video-player> -->
+  <video-player  class="video-player vjs-custom-skin"
+     ref="videoPlayer"
+     :playsinline="true"
+     :options="playerOptions7"
+></video-player>
       </div>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">美容连锁</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">连锁经营</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片1.png" />
@@ -93,7 +100,7 @@
           <van-image src="../../../../static/img/chain/图片5.png" />
         </van-grid-item>
       </van-grid>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">师资力量</div>
+      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医师团队</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <van-image src="../../../../static/img/chain/图片6.png" />
@@ -220,7 +227,7 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+        poster: "../../../../static/video/1.png", //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -248,7 +255,7 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+        poster: "../../../../static/video/2.png", //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -276,7 +283,7 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+        poster: "../../../../static/video/3.png", //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -304,7 +311,7 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+         poster: "../../../../static/video/4.png", //你的封面地址, //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -332,7 +339,7 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+         poster: "../../../../static/video/5.png", //你的封面地址, //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {
@@ -360,7 +367,63 @@ import 'video.js/dist/video-js.css'
         },
        
       ] ,
-        // poster: "../../static/images/test.jpg", //你的封面地址
+        poster: "../../../../static/video/6.png", //你的封面地址, //你的封面地址
+        // width: document.documentElement.clientWidth,
+        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+        controlBar: {
+          timeDivider: true,
+          durationDisplay: true,
+          remainingTimeDisplay: false,
+          fullscreenToggle: true  //全屏按钮
+        }
+    },
+      playerOptions6 : {
+        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+        autoplay: false, //如果true,浏览器准备好时开始回放。
+        muted: false, // 默认情况下将会消除任何音频。
+        loop: false, // 导致视频一结束就重新开始。
+        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+        language: 'zh-CN',
+        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+        sources:[
+       {
+          
+          src:
+            "../../../../static/video/7.mp4",
+          type: 'video/mp4' //播放hls流
+        },
+       
+      ] ,
+         poster: "../../../../static/video/7.png", //你的封面地址 //你的封面地址
+        // width: document.documentElement.clientWidth,
+        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+        controlBar: {
+          timeDivider: true,
+          durationDisplay: true,
+          remainingTimeDisplay: false,
+          fullscreenToggle: true  //全屏按钮
+        }
+    },
+      playerOptions7: {
+        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+        autoplay: false, //如果true,浏览器准备好时开始回放。
+        muted: false, // 默认情况下将会消除任何音频。
+        loop: false, // 导致视频一结束就重新开始。
+        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+        language: 'zh-CN',
+        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+        sources:[
+       {
+          
+          src:
+            "../../../../static/video/8.mp4",
+          type: 'video/mp4' //播放hls流
+        },
+       
+      ] ,
+         poster: "../../../../static/video/8.png", //你的封面地址 //你的封面地址
         // width: document.documentElement.clientWidth,
         notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
         controlBar: {

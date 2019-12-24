@@ -1,6 +1,5 @@
 <template>
-  <div class="bord">
-
+  <div class="bord" style="background:#f0f0f0;">
     <!-- <van-notice-bar
       text="安美汇整合了由上海、广州、深圳、福建、贵阳、惠州、广西、四川、在内百余家医院共同开发建设，迎合当下市场潮流，顺应时代趋势，运用了当下最为先进的商业模式和为全产业赋能的美业生态消费体系，为全产业上下游提供更高效，良性的经营战略，重塑行业新生态，制定行业新标准；快速成为中国美业生态链第一平台；"
       left-icon="volume-o" /> -->
@@ -8,12 +7,38 @@
         <div >招商剖析</div>
       </div> -->
     <div class="img-responsive">
-      <img src="../../../../static/img/zhaoshang/WechatIMG1730.jpeg" alt="">
+      <!-- <img src="../../../../static/img/zhaoshang/WechatIMG1730.jpeg" alt=""> -->
     </div>
     <div>
-      <div v-for="(item,index) in allProducts" :key="index" style="color:#69696a">
-        <van-card :price="item.memberMoney+'.00'" desc="　" :title="item.memberName+'('+text[index]+')'" :origin-price='price[index]'>
-          <!-- <div slot="tags" v-if="index==0" style="display:flex;">
+      <div v-for="(item,index) in vip" :key="index" style="color:#69696a" class="borderCard">
+        <!-- <van-card > -->
+        <div class="tags">
+          <img :src="item" alt="" style="width: 185px;height:220px">
+        </div>
+        <div style="text-align: center;width:100%;color:#ababab">
+          <div style="height:180px;" v-if="index==0">
+                   <p>招商奖励20%</p>
+              <p>5盒熬夜医美面膜</p>
+          </div>
+            <div style="height:180px;" v-if="index==1">
+                 <p>招商直推30% 8%</p>
+              <p>赠送vip名额1位</p>
+              <p>时尚芭莎独家赞助口红组合</p>
+                  </div>
+            <div style="height:180px;" v-if="index==2">
+            <p>项目奖励30% 3%</p>
+              <p>20盒熬夜医美面膜</p>
+          </div>
+          <div>
+
+                    <van-button type="primary" style="width: 75px;" size="mini" @click="pay(item.id)">点击加入</van-button>
+          </div>
+        </div>
+
+        <!-- thumb="../../../../static/img/vip/vip.jpeg"  -->
+        <!-- :price="item.memberMoney+'.00'" desc="　" :title="item.memberName+'('+text[index]+')'" :origin-price='price[index]' -->
+
+        <!-- <div slot="tags" v-if="index==0" style="display:flex;">
             <div style="flex:1">
               <p>招商奖励20%</p>
               <p>5盒熬夜医美面膜</p>
@@ -38,10 +63,10 @@
           <div slot="tags" v-if="index==2" style="display:flex">
             <div style="flex:1">
           <p> -->
-          <div slot="footer">
+        <!-- <div slot="footer">
             <van-button style="width: 75px;" size="mini" @click="pay(item.id)">点击加入</van-button>
-          </div>
-        </van-card>
+          </div> -->
+        <!-- </van-card> -->
 
       </div>
 
@@ -88,7 +113,7 @@
     name: "tab-products",
     data() {
       return {
-        text:['客户门槛','代言人门槛','私董门槛'],
+        text: ['客户门槛', '代言人门槛', '私董门槛'],
         imgPattern: ['../../../../static/img/zhaoshang/1.png', '../../../../static/img/zhaoshang/2.png',
           '../../../../static/img/zhaoshang/3.png', '../../../../static/img/zhaoshang/4.png',
           '../../../../static/img/zhaoshang/5.png', '../../../../static/img/zhaoshang/6.png'
@@ -119,7 +144,10 @@
             title: '期限'
           },
         ],
-        allProducts: []
+        allProducts: [],
+        vip: ['../../../../static/img/vip/vip.jpeg', '../../../../static/img/vip/WechatIMG2143.jpeg',
+          '../../../../static/img/vip/私懂.jpeg'
+        ],
 
       };
     },
@@ -145,6 +173,9 @@
       this.$http.post(`api/user/query`).then(res => {
         if (res.data.code == 200) {
           this.allProducts = res.data.data
+          // this.allProducts.map((item,index)=>{
+          //   item.img=vip[index]
+          // })
         }
       }).catch(err => {
         this._dismissLoading();
@@ -325,6 +356,18 @@
 
   .van-card__footer {
     text-align: right;
+  }
+
+  .borderCard {
+    display: flex;
+    border: 1px solid #d7e6e2;
+    background: white;
+    margin: 10px
+  }
+
+  .tags {
+    margin: 0 5px;
+    margin-top: 5px;
   }
 
   .product {

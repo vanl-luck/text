@@ -3,7 +3,7 @@
     <van-nav-bar left-arrow @click-left="_routerBack" title="付款" fixed :z-index="10"></van-nav-bar>
     <!-- <van-cell title="基本资料" icon="info-o"  size="large" @click="onVersionClick" is-link> -->
     <div class="img-responsive">
-      <img :src="price[this.$route.query-3]" alt="">
+      <img src="../../../static/img/price/2980.jpg" alt="">
       <div style="margin:20px 0;text-align:center;">
         <van-dialog v-if="showTrue" :beforeClose="chargeBtn" v-model="show" title="付款图上传" :show-cancel-button='true'
           :showCancelButton='true'>
