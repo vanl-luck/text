@@ -17,17 +17,17 @@
         </div>
         <div style="text-align: center;width:100%;color:#ababab">
           <div style="height:180px;" v-if="index==0">
-                   <p>招商奖励20%</p>
-              <p>5盒熬夜医美面膜</p>
+                   <!-- <p>招商奖励20%</p>
+              <p>5盒熬夜医美面膜</p> -->
           </div>
             <div style="height:180px;" v-if="index==1">
-                 <p>招商直推30% 8%</p>
+                 <!-- <p>招商直推30% 8%</p>
               <p>赠送vip名额1位</p>
-              <p>时尚芭莎独家赞助口红组合</p>
+              <p>时尚芭莎独家赞助口红组合</p> -->
                   </div>
             <div style="height:180px;" v-if="index==2">
-            <p>项目奖励30% 3%</p>
-              <p>20盒熬夜医美面膜</p>
+            <!-- <p>项目奖励30% 3%</p> -->
+              <!-- <p>20盒熬夜医美面膜</p> -->
           </div>
           <div>
 
@@ -262,7 +262,8 @@
 
 
 
-        // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cf67da399a7cad0&redirect_uri=http://localhost:8023/#/main/products&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cf67da399a7cad0&redirect_uri=http://http://www.anmeihui.cn/#/main/products&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+        return
 
         //                this.axios.post("user/recommend", data).then(res => {
         //   //成功状态下 
