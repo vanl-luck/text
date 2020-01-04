@@ -50,6 +50,7 @@
         loginWay: 1, //1: 账密，2：验证码
         smsCountDown: 0,
         smsCountInterval: null,
+        wxcode :''
       };
     },
     computed: {
@@ -73,6 +74,19 @@
       },
     },
     created() {
+   if(window.location.search){
+
+        let str = window.location.search.split("&")[0].split("=")[1]
+
+        this.wxcode = str
+        console.log(this.wxcode);
+      }else{
+
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
+
+      }
+
+
       if (JSON.parse(localStorage.getItem("user"))) {
         this._routePush('mine');
       }
@@ -103,6 +117,18 @@
           }
         }, 1000);
       },
+       getUrlParam (name) {
+  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+  let url = window.location.href.split('#')[0]
+  let search = url.split('?')[1]
+  if (search) {
+    var r = search.substr(0).match(reg)
+    if (r !== null) return unescape(r[2])
+    return null
+  } else {
+    return null
+  }
+},
       onSMSLogin() {
         this.onLoginClick();
       },
@@ -112,10 +138,12 @@
 //  this._routeReplace('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
       },
       onLoginClick() {
-        
+        // location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1")
+        //  window.location.href =
         if(this.userName&&this.password){
 
-        this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}`).then(res => {
+        this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}&code=${this.wxcode}`).then(res => {
+        
           if (res.data.code == 200) {
             this._showLoading();
             // console.log(res.data.data.token);
@@ -126,7 +154,7 @@
               this._dismissLoading();
               this._routePush('mine');
             }, 1000);
-            // window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
+           
             localStorage.setItem('user', JSON.stringify(res.data.data))
 
           } else {
