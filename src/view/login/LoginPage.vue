@@ -126,7 +126,7 @@
               this._dismissLoading();
               this._routePush('mine');
             }, 1000);
-
+            // window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
             localStorage.setItem('user', JSON.stringify(res.data.data))
 
           } else {

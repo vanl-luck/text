@@ -16,7 +16,9 @@ import router from './router';
 import store from './vuex';
 import stream from './http';
 import urls from './http/urls';
+// import { Lazyload } from 'vant';
 
+// Vue.use(Lazyload, options);
 Vue.use(Vant);
 Vue.use(Lazyload);
 Vue.use(VueClipboards);
