@@ -48,8 +48,9 @@
       <van-field v-model="name" disabled clearable label="姓名" placeholder="请输入项目的费用" />
       <van-field v-model="Alipay" disabled clearable label="支付宝账号" placeholder="请输入项目的费用" />
       <van-field v-model="money" disabled clearable label="可提现金额" />
-      <van-field v-model="Tqu" clearable label="提现金" placeholder="请选择提现金额" @focus="start" />
-      <van-popup v-model="show" position="bottom">
+          <van-field  v-if="this.judge==1" v-model="amount"  placeholder="请输入提现金额" clearable label="提现金" />
+      <van-field v-if="this.judge==2" v-model="Tqu" clearable label="提现金" placeholder="请选择提现金额" @focus="start" />
+      <van-popup  v-model="show" position="bottom">
 
         <!-- <div v-for="domain in listSelect"> -->
 
@@ -140,7 +141,7 @@
         // if(this.listSelect.map(item=>{})){
 
         // }
-        if(this.Tqu){
+        if(this.Tqu&&this.Alipay){
    
         let param = {
           userId: JSON.parse(localStorage.getItem("user")).id,
@@ -171,7 +172,13 @@
         });
        
         }else{
+          if(this.Alipay){
              this._showToast('请选择金额');
+
+          }else{
+             this._showToast('请到设置里面设置支付宝账号');
+
+          }
         }
       },
       selectWithdraw() {
