@@ -135,7 +135,7 @@
       };
     },
     created() {
-
+    // window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
       // this.user = JSON.parse(localStorage.getItem('user'))
       // if (user) {
       //   this.rewardIntegral = user.rewardIntegral

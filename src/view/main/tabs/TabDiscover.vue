@@ -41,72 +41,31 @@
       </div>
       <!--下部应用入口-->
       <div>
-      <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions"
-></video-player>
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions1"
-></video-player>
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions2"
-></video-player>
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions3"
-></video-player>
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions4"
-></video-player>
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions5"
-></video-player>
-  <!-- <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions6"
-></video-player> -->
-  <video-player  class="video-player vjs-custom-skin"
-     ref="videoPlayer"
-     :playsinline="true"
-     :options="playerOptions7"
-></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions1"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions2"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions3"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions4"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions5"></video-player>
+        <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
+          :options="playerOptions7"></video-player>
       </div>
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">连锁经营</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片1.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片2.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片3.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片4.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片5.png" />
+          <img class="laze-img" v-for="img in manageImg" v-lazy="img">
         </van-grid-item>
       </van-grid>
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医师团队</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片6.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片7.png" />
+          <img class="laze-img" v-for="img in physicianIme" v-lazy="img">
         </van-grid-item>
       </van-grid>
 
@@ -114,91 +73,71 @@
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医院环境</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片9.png" />
+          <img class="laze-img" v-lazy="hospital">
         </van-grid-item>
 
       </van-grid>
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">服务体系</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片15.png" />
+          <img class="laze-img" v-for="img in serviceImg" v-lazy="img">
         </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片16.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片17.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片18.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片19.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片20.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片21.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片22.png" />
-        </van-grid-item>
-
       </van-grid>
       <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">十大优势</div>
+
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片10.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片11.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片12.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片13.png" />
-        </van-grid-item>
-        <van-grid-item>
-          <van-image src="../../../../static/img/chain/图片14.png" />
-        </van-grid-item>
-        <van-grid-item>
+          <img class="laze-img" v-for="img in advantageImg" v-lazy="img">
         </van-grid-item>
       </van-grid>
-      <!-- <van-row class="line2-all">
-        <van-col span="12" v-for="(it, idx) in middleApps" :key="idx" class="line2-item click-box">
-          <img :src="'static/img/discovery/'+it.icon" class="line2-icon" />
-          <div>
-            <div class="line2-title">{{it.title}}</div>
-            <div class="line2-text light-txt">{{it.text}}</div>
-          </div>
-        </van-col>
-      </van-row> -->
+
     </div>
   </div>
 </template>
 
 <script>
-// videojs('my-video', {
-//     bigPlayButton: false,
-//     textTrackDisplay: false,
-//     posterImage: true,
-//     errorDisplay: false,
-//     controlBar: true
-// }, function () {
-//     this.play()
-// })
-
-import { videoPlayer } from 'vue-video-player'
-import 'video.js/dist/video-js.css'
-  export default {
-      components: {
+  import {
     videoPlayer
-  },
+  } from 'vue-video-player'
+  import 'video.js/dist/video-js.css'
+
+  export default {
+    components: {
+      videoPlayer
+    },
     name: "tab-discover",
     data() {
       return {
+        hospital: '../../../../static/img/chain/图片9.png',
+        manageImg: [
+          "../../../../static/img/chain/图片1.png",
+          "../../../../static/img/chain/图片2.png",
+          "../../../../static/img/chain/图片3.png",
+          "../../../../static/img/chain/图片4.png",
+          "../../../../static/img/chain/图片5.png"
+
+        ],
+        physicianIme: [
+          '../../../../static/img/chain/图片6.png',
+          '../../../../static/img/chain/图片7.png',
+        ],
+        serviceImg: [
+          '../../../../static/img/chain/图片15.png',
+          '../../../../static/img/chain/图片16.png',
+          '../../../../static/img/chain/图片17.png',
+          '../../../../static/img/chain/图片18.png',
+          '../../../../static/img/chain/图片19.png',
+          '../../../../static/img/chain/图片20.png',
+          '../../../../static/img/chain/图片21.png',
+          '../../../../static/img/chain/图片22.png',
+        ],
+        advantageImg: [
+          '../../../../static/img/chain/图片10.png',
+          '../../../../static/img/chain/图片11.png',
+          '../../../../static/img/chain/图片12.png',
+          '../../../../static/img/chain/图片13.png',
+          '../../../../static/img/chain/图片14.png',
+        ],
         imgData: ['../../../../static/img/doctor/WechatIMG1640.jpeg',
           '../../../../static/img/doctor/WechatIMG1642.jpeg',
           '../../../../static/img/doctor/WechatIMG1643.jpeg',
@@ -209,257 +148,235 @@ import 'video.js/dist/video-js.css'
           '../../../../static/img/doctor/WechatIMG1648.jpeg',
           '../../../../static/img/doctor/WechatIMG1649.jpeg'
         ],
-        playerOptions : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/1.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/1.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/1.png", //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-        poster: "../../../../static/video/1.png", //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions1 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。  
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/2.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions1: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。  
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/2.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/2.png", //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-        poster: "../../../../static/video/2.png", //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions2 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/3.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions2: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/3.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/3.png", //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-        poster: "../../../../static/video/3.png", //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions3 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/4.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions3: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/4.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/4.png", //你的封面地址, //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-         poster: "../../../../static/video/4.png", //你的封面地址, //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions4 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/5.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions4: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/5.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/5.png", //你的封面地址, //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-         poster: "../../../../static/video/5.png", //你的封面地址, //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions5 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/6.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions5: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/6.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/6.png", //你的封面地址, //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-        poster: "../../../../static/video/6.png", //你的封面地址, //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions6 : {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/7.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions6: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/7.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/7.png", //你的封面地址 //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-         poster: "../../../../static/video/7.png", //你的封面地址 //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-      playerOptions7: {
-        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
-        autoplay: false, //如果true,浏览器准备好时开始回放。
-        muted: false, // 默认情况下将会消除任何音频。
-        loop: false, // 导致视频一结束就重新开始。
-        preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
-        language: 'zh-CN',
-        aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
-        fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
-        sources:[
-       {
-          
-          src:
-            "../../../../static/video/8.mp4",
-          type: 'video/mp4' //播放hls流
+        playerOptions7: {
+          playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+          autoplay: false, //如果true,浏览器准备好时开始回放。
+          muted: false, // 默认情况下将会消除任何音频。
+          loop: false, // 导致视频一结束就重新开始。
+          preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+          language: 'zh-CN',
+          aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+          fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
+          sources: [{
+
+              src: "../../../../static/video/8.mp4",
+              type: 'video/mp4' //播放hls流
+            },
+
+          ],
+          poster: "../../../../static/video/8.png", //你的封面地址 //你的封面地址
+          // width: document.documentElement.clientWidth,
+          notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
+          controlBar: {
+            timeDivider: true,
+            durationDisplay: true,
+            remainingTimeDisplay: false,
+            fullscreenToggle: true //全屏按钮
+          }
         },
-       
-      ] ,
-         poster: "../../../../static/video/8.png", //你的封面地址 //你的封面地址
-        // width: document.documentElement.clientWidth,
-        notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
-        controlBar: {
-          timeDivider: true,
-          durationDisplay: true,
-          remainingTimeDisplay: false,
-          fullscreenToggle: true  //全屏按钮
-        }
-    },
-         vedioData: [
-         {
-          src:
-            "../../../../static/video/2.mp4",
-          type: 'video/mp4' //播放hls流
-        },
-              {
-          src:
-            "../../../../static/video/3.mp4",
-          type: 'video/mp4' //播放hls流
-        },
-              {
-          src:
-            "../../../../static/video/4.mp4",
-          type: 'video/mp4' //播放hls流
-        },
-              {
-          src:
-            "../../../../static/video/5.mp4",
-          type: 'video/mp4' //播放hls流
-        },
-              {
-          src:
-            "../../../../static/video/6.mp4",
-          type: 'video/mp4' //播放hls流
-        },
-      ]
+        vedioData: [{
+            src: "../../../../static/video/2.mp4",
+            type: 'video/mp4' //播放hls流
+          },
+          {
+            src: "../../../../static/video/3.mp4",
+            type: 'video/mp4' //播放hls流
+          },
+          {
+            src: "../../../../static/video/4.mp4",
+            type: 'video/mp4' //播放hls流
+          },
+          {
+            src: "../../../../static/video/5.mp4",
+            type: 'video/mp4' //播放hls流
+          },
+          {
+            src: "../../../../static/video/6.mp4",
+            type: 'video/mp4' //播放hls流
+          },
+        ]
 
       };
     },
@@ -470,25 +387,27 @@ import 'video.js/dist/video-js.css'
         })
       }
     },
-    mounted(){
-      console.log( ...this.vedioData);
+    mounted() {
+      console.log(...this.vedioData);
     }
-    
+
   }
 
 </script>
 
 <style scoped lang="scss">
-/deep/ .video-js .vjs-big-play-button{
-  left: 50%;
-  top: 50%;
-  margin-left:-45px;
-  margin-top:-25px;
-  
-}
-.video-player{
-  margin:0px 20px;
-}
+  /deep/ .video-js .vjs-big-play-button {
+    left: 50%;
+    top: 50%;
+    margin-left: -45px;
+    margin-top: -25px;
+
+  }
+
+  .video-player {
+    margin: 0px 20px;
+  }
+
   .commu-all {
     background-size: 100% 100%;
     padding: 6px 16px 20px 16px;
@@ -564,6 +483,12 @@ import 'video.js/dist/video-js.css'
   .img-responsive img {
     width: 100%;
     height: inherit;
+  }
+
+  .laze-img {
+    margin-top: 10px;
+    width: 100%;
+    // height: inherit;
   }
 
 </style>
