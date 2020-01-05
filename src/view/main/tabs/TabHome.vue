@@ -5,6 +5,9 @@
 </template>
 
 <script>
+  import {
+    Toast
+  } from 'vant';
   export default {
     name: "tab-home",
     data() {
@@ -20,7 +23,10 @@
           if (res.data.code == 200) {
             this.imgSrc = res.data.data
             // this.allData = res.data.data.list
-          } 
+          }else if(res.data.code==100){
+            Toast('未缴费用户');
+            this.$router.push('mine')
+          }
         })
       }
     },

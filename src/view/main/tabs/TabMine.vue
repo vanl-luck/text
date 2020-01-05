@@ -2,7 +2,7 @@
   <div>
     <!--顶部导航-->
     <div class="top-nav ">
-      <van-image lazy-load style="width:32.5px;height:27.4px" src="../../../../static/img/微信图片_20191217153519.png" class="head-img"></van-image>
+      <van-image lazy-load style="width:28px;height:28px" width="15rem" height="15rem"  round :src="mineUrl" class="head-img"></van-image>
       <div class="top-right">
         <van-icon name="static/img/mine/mine_nav_settings2.png" size="28px" @click="onSettingsClick"></van-icon>
       </div>
@@ -10,20 +10,14 @@
     <!--下部内容-->
     <div class="nav-con " style="background: #f0f0f0;" v-if="">
       <div class="amount-con " style="display:flex;">
-        <van-image style="left:30px;    width: 97.5px;height: 68.5px;" width="5rem" height="5rem" src="../../../../static/img/微信图片_20191217153519.png" />
+        <van-image style="left:30px;top:10px;width: 66px;height: 66px;" round width="15rem" height="15rem" :src="mineUrl" />
 
         <div style="margin-left:30px;">
           <div class="light-txt amount-ins">名字:{{user.userName}}</div>
           <div class="light-txt amount-ins">手机:{{user.phone}}</div>
           <div class="light-txt amount-ins">级别:{{user.memberName}}</div>
         </div>
-        <!-- <div class="img-div">
-
-
-          <van-image style="width:100px;right:10px" lazy-load
-            src="../../../../static/img/product/微信图片_20191223085800.jpg" class="head-img" fit="cover">
-          </van-image>
-        </div> -->
+   
       </div>
       <!--代收收益-->
       <van-row class="receive-all">
@@ -130,11 +124,13 @@
           rewardIntegral: '',
           excellentIntegral: '',
           shareIntegral: '',
-        }
-
+        },
+      mineUrl:''
       };
     },
     created() {
+      console.log(this.$route.params);
+      this.mineUrl=JSON.parse(localStorage.getItem('user')).headUrl
     // window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
       // this.user = JSON.parse(localStorage.getItem('user'))
       // if (user) {

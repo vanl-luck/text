@@ -146,13 +146,16 @@
         
           if (res.data.code == 200) {
             this._showLoading();
-            // console.log(res.data.data.token);
+            console.log(res.data.data.headUrl);
             this.$store.commit('TokenInfo', res.data.data.token);
             this.$store.commit('setUserInfo', res.data.data);
             setTimeout(() => {
               Toast('登录成功');
               this._dismissLoading();
-              this._routePush('mine');
+              this.$router.push({
+                name:'mine',
+              })
+           
             }, 1000);
            
             localStorage.setItem('user', JSON.stringify(res.data.data))
