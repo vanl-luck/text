@@ -164,7 +164,7 @@
             },
 
           ],
-          poster: "../../../../static/video/1.png", //你的封面地址
+          poster: "../../../../static/video/1-min.png", //你的封面地址
           // width: document.documentElement.clientWidth,
           notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {
@@ -190,7 +190,7 @@
             },
 
           ],
-          poster: "../../../../static/video/2.png", //你的封面地址
+          poster: "../../../../static/video/2-min.png", //你的封面地址
           // width: document.documentElement.clientWidth,
           notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {
@@ -216,7 +216,7 @@
             },
 
           ],
-          poster: "../../../../static/video/3.png", //你的封面地址
+          poster: "../../../../static/video/3-min.png", //你的封面地址
           // width: document.documentElement.clientWidth,
           notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {
@@ -242,7 +242,7 @@
             },
 
           ],
-          poster: "../../../../static/video/4.png", //你的封面地址, //你的封面地址
+          poster: "../../../../static/video/4-min.png", //你的封面地址, //你的封面地址
           // width: document.documentElement.clientWidth,
           notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {
@@ -268,7 +268,7 @@
             },
 
           ],
-          poster: "../../../../static/video/5.png", //你的封面地址, //你的封面地址
+          poster: "../../../../static/video/5-min.png", //你的封面地址, //你的封面地址
           // width: document.documentElement.clientWidth,
           notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {

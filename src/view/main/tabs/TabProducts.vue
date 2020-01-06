@@ -7,7 +7,6 @@
         <div >招商剖析</div>
       </div> -->
     <div class="img-responsive">
-      <!-- <img src="../../../../static/img/zhaoshang/WechatIMG1730.jpeg" alt=""> -->
     </div>
     <div>
       <div v-for="(item,index) in vip" :key="index" style="color:#69696a" class="borderCard">
@@ -344,7 +343,6 @@
 
 <style scoped lang="scss">
   .imgBackground {
-    background: url('../../../../static/img/zhaoshang/WechatIMG1730.jpeg');
     margin-top: 5px;
     height: 80px;
     // div{
@@ -402,7 +400,6 @@
   }
 
   .backImg {
-    // background:url('../../../../static/img/zhaoshang/WechatIMG1730.jpeg') 
   }
 
   .prod-item {

@@ -112,6 +112,7 @@
             icon: 'mine_app_icon7.png',
             flag: '',
             title: '关于我们',
+            id: 8
           },
           {
             icon: 'mine_app_icon1.png',
