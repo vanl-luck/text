@@ -27,6 +27,11 @@
           <!-- <van-button type="danger" plain round class="login-btn" @click="loginWay=3-loginWay">短信登录</van-button> -->
         </div>
       </div>
+      <div class="bottom">
+        <a href="http://www.beian.miit.gov.cn" style="color:#010101;">
+       粤ICP备19162088号
+        </a>
+      </div>
       <!--验证码登陆-->
 
     </div>
@@ -188,6 +193,12 @@
 </script>
 
 <style scoped>
+.bottom{
+      position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left:-74px;
+}
   .send-btn {
     height: 26px;
     line-height: 24px;
