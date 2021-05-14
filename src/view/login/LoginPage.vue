@@ -79,22 +79,20 @@
       },
     },
     created() {
-   if(window.location.search){
+//    if(window.location.search){
 
-        let str = window.location.search.split("&")[0].split("=")[1]
+//         let str = window.location.search.split("&")[0].split("=")[1]
 
-        this.wxcode = str
-        console.log(this.wxcode);
-      }else{
+//         this.wxcode = str
+//         console.log(this.wxcode);
+//       }else{
 
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
+//         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
 
-      }
+//       }
 
 
-      if (JSON.parse(localStorage.getItem("user"))) {
-        this._routePush('mine');
-      }
+
     },
     mounted() {
 
