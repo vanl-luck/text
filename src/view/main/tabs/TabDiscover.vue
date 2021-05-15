@@ -56,13 +56,11 @@
         <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
           :options="playerOptions7"></video-player>
       </div>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">连锁经营</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-for="img in manageImg" v-lazy="img">
         </van-grid-item>
       </van-grid>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医师团队</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-for="img in physicianIme" v-lazy="img">
@@ -70,20 +68,13 @@
       </van-grid>
 
 
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">医院环境</div>
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-lazy="hospital">
         </van-grid-item>
 
       </van-grid>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">服务体系</div>
-      <van-grid :border="false" :column-num="1" :gutter="10">
-        <van-grid-item>
-          <img class="laze-img" v-for="img in serviceImg" v-lazy="img">
-        </van-grid-item>
-      </van-grid>
-      <div class="commu-left" style="color: #FE7846;text-align:left;margin:5px;margin-left:25px;">十大优势</div>
+
 
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
