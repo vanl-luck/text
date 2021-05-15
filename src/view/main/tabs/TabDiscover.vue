@@ -61,26 +61,26 @@
           <img class="laze-img" v-for="img in manageImg" v-lazy="img">
         </van-grid-item>
       </van-grid>
-      <van-grid :border="false" :column-num="1" :gutter="10">
+      <!-- <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-for="img in physicianIme" v-lazy="img">
         </van-grid-item>
-      </van-grid>
+      </van-grid> -->
 
 
-      <van-grid :border="false" :column-num="1" :gutter="10">
+      <!-- <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-lazy="hospital">
         </van-grid-item>
 
-      </van-grid>
+      </van-grid> -->
 
 
-      <van-grid :border="false" :column-num="1" :gutter="10">
+      <!-- <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-for="img in advantageImg" v-lazy="img">
         </van-grid-item>
-      </van-grid>
+      </van-grid> -->
 
     </div>
   </div>
@@ -99,35 +99,21 @@
     name: "tab-discover",
     data() {
       return {
-        hospital: '../../../../static/img/chain/图片9.png',
+        // hospital: '../../../../static/img/chain/图片9.png',
         manageImg: [
           "../../../../static/img/chain/图片1.png",
           "../../../../static/img/chain/图片2.png",
           "../../../../static/img/chain/图片3.png",
           "../../../../static/img/chain/图片4.png",
-          "../../../../static/img/chain/图片5.png"
-
-        ],
-        physicianIme: [
+          "../../../../static/img/chain/图片5.png",
           '../../../../static/img/chain/图片6.png',
           '../../../../static/img/chain/图片7.png',
-        ],
-        serviceImg: [
-          '../../../../static/img/chain/图片15.png',
-          '../../../../static/img/chain/图片16.png',
-          '../../../../static/img/chain/图片17.png',
-          '../../../../static/img/chain/图片18.png',
-          '../../../../static/img/chain/图片19.png',
-          '../../../../static/img/chain/图片20.png',
-          '../../../../static/img/chain/图片21.png',
-          '../../../../static/img/chain/图片22.png',
-        ],
-        advantageImg: [
           '../../../../static/img/chain/图片10.png',
           '../../../../static/img/chain/图片11.png',
           '../../../../static/img/chain/图片12.png',
           '../../../../static/img/chain/图片13.png',
           '../../../../static/img/chain/图片14.png',
+
         ],
         imgData: ['../../../../static/img/doctor/WechatIMG1640.jpeg',
           '../../../../static/img/doctor/WechatIMG1642.jpeg',
