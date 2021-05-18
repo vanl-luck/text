@@ -8,7 +8,6 @@ import TabHome from '../view/main/tabs/TabHome';
 import TabProducts from '../view/main/tabs/TabProducts';
 import TabDiscover from '../view/main/tabs/TabDiscover';
 import TabMine from '../view/main/tabs/TabMine';
-
 const SettingsPage = r => require.ensure([], () => r(require('../view/mine/SettingsPage')), 'SettingsPage');
 const IFrameWebPage = r => require.ensure([], () => r(require('../view/common/IFrameWebPage')), 'IFrameWebPage');
 const money = r => require.ensure([], () => r(require('../view/mine/money')), 'money');
@@ -20,10 +19,8 @@ const TestCasePage = r => require.ensure([], () => r(require('../view/mine/TestC
 const ForumPage = r => require.ensure([], () => r(require('../view/discover/ForumPage')), 'ForumPage');
 const addMine = r => require.ensure([], () => r(require('../view/mine/addMine')), 'addMine');
 const selectExamineRecord = r => require.ensure([], () => r(require('../view/mine/selectExamineRecord')), 'selectExamineRecord');
-
 const withdraw = r => require.ensure([], () => r(require('../view/mine/withdraw')), 'withdraw');
 const aboutUs = r => require.ensure([], () => r(require('../view/mine/aboutUs')), 'aboutUs');
-
 const MessagePage = r => require.ensure([], () => r(require('../view/mine/MessagePage')), 'MessagePage');
 const MessageDetail = r => require.ensure([], () => r(require('../view/mine/MessageDetail')), 'MessageDetail');
 const test = r => require.ensure([], () => r(require('../view/mine/test')), 'test');
@@ -32,7 +29,6 @@ const register = r => require.ensure([], () => r(require('../view/login/register
 const LoginPage = r => require.ensure([], () => r(require('../view/login/LoginPage')), 'LoginPage');
 const GestureCreate = r => require.ensure([], () => r(require('../view/login/GestureCreate')), 'GestureCreate');
 const basic = r => require.ensure([], () => r(require('../view/main/setting/basic')), 'basic'); 
-
 const routes = [
   {path: '*', redirect: '/LoginPage'},
   {

@@ -8,7 +8,7 @@
       </div>
     </div>
     <!--下部内容-->
-    <div class="nav-con " style="background: #f0f0f0;" v-if="">
+    <div class="nav-con " style="background: #f0f0f0;" >
       <div class="amount-con " style="display:flex;">
         <van-image style="left:30px;top:10px;width: 66px;height: 66px;" round width="15rem" height="15rem" :src="mineUrl" />
 
@@ -132,13 +132,7 @@
     created() {
       console.log(this.$route.params);
       this.mineUrl=JSON.parse(localStorage.getItem('user')).headUrl
-    // window.location.href ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
-      // this.user = JSON.parse(localStorage.getItem('user'))
-      // if (user) {
-      //   this.rewardIntegral = user.rewardIntegral
-      //   this.excellentIntegral = user.excellentIntegral
-      //   this.rewardIntegral = user.rewardIntegral
-      // }
+
 
       this.numcomponent()
 
