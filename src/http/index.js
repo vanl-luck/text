@@ -4,7 +4,7 @@ const http = axios.create();
 
 
 
-  http.defaults.baseURL = 'https://huahuaguoshan.com/api/'
+  http.defaults.baseURL = 'http://159.75.232.235:8081'
 // process.env.HOST_URL;
 
 // 访问超时设置

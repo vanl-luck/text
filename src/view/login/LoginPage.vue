@@ -22,14 +22,14 @@
         <div class="button-con">
           <van-button type="danger" round class="login-btn" @click="onLoginClick">登录
           </van-button>
-           <!-- <van-button type="danger" round class="login-btn" @click="onLoginClick1">登录
+          <!-- <van-button type="danger" round class="login-btn" @click="onLoginClick1">登录
           </van-button> -->
           <!-- <van-button type="danger" plain round class="login-btn" @click="loginWay=3-loginWay">短信登录</van-button> -->
         </div>
       </div>
       <div class="bottom">
         <a href="http://www.beian.miit.gov.cn" style="color:#010101;">
-       粤ICP备19162088号
+          粤ICP备19162088号
         </a>
       </div>
       <!--验证码登陆-->
@@ -39,8 +39,7 @@
 </template>
 
 <script>
-  // import { Notify } from 'vant';
-  // Vue.use(Notify);
+  import wx from "weixin-js-sdk";
   import {
     Toast
   } from 'vant';
@@ -55,7 +54,7 @@
         loginWay: 1, //1: 账密，2：验证码
         smsCountDown: 0,
         smsCountInterval: null,
-        wxcode :''
+        wxcode: ''
       };
     },
     computed: {
@@ -79,17 +78,17 @@
       },
     },
     created() {
-//    if(window.location.search){
+      //    if(window.location.search){
 
-//         let str = window.location.search.split("&")[0].split("=")[1]
+      //         let str = window.location.search.split("&")[0].split("=")[1]
 
-//         this.wxcode = str
-//         console.log(this.wxcode);
-//       }else{
+      //         this.wxcode = str
+      //         console.log(this.wxcode);
+      //       }else{
 
-//         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
+      //         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
 
-//       }
+      //       }
 
 
 
@@ -120,59 +119,63 @@
           }
         }, 1000);
       },
-       getUrlParam (name) {
-  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
-  let url = window.location.href.split('#')[0]
-  let search = url.split('?')[1]
-  if (search) {
-    var r = search.substr(0).match(reg)
-    if (r !== null) return unescape(r[2])
-    return null
-  } else {
-    return null
-  }
-},
+      getUrlParam(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        let url = window.location.href.split('#')[0]
+        let search = url.split('?')[1]
+        if (search) {
+          var r = search.substr(0).match(reg)
+          if (r !== null) return unescape(r[2])
+          return null
+        } else {
+          return null
+        }
+      },
       onSMSLogin() {
         this.onLoginClick();
       },
       // 模拟登陆
-      onLoginClick1(){
-        window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
-//  this._routeReplace('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
+      onLoginClick1() {
+        window.location.href =
+          'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
+        //  this._routeReplace('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
       },
       onLoginClick() {
         // location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1")
         //  window.location.href =
-        if(this.userName&&this.password){
+        if (this.userName && this.password) {
 
-        this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}&code=${this.wxcode}`).then(res => {
-        
-          if (res.data.code == 200) {
-            this._showLoading();
-            console.log(res.data.data.headUrl);
-            this.$store.commit('TokenInfo', res.data.data.token);
-            this.$store.commit('setUserInfo', res.data.data);
-            setTimeout(() => {
-              Toast('登录成功');
-              this._dismissLoading();
-              this.$router.push({
-                name:'mine',
-              })
-           
-            }, 1000);
-           
-            localStorage.setItem('user', JSON.stringify(res.data.data))
+          this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}&code=${this.wxcode}`).then(
+            res => {
+   
+              if (res.data.code == 200) {
+                this._showLoading();
+                console.log(res.data.data.headUrl);
+                this.$store.commit('TokenInfo', res.data.data.token);
+                this.$store.commit('setUserInfo', res.data.data);
 
-          } else {
-            Toast('账号密码错误');
-          }
-        }).catch(err => {
-          this._dismissLoading();
-          this._showToast('系统错误');
-        });
-          
-        }else{
-           Toast('请输入账号密码');
+                setTimeout(() => {
+                  Toast('登录成功');
+                  this._dismissLoading();
+                  this.$router.push({
+                    name: 'mine',
+                  })
+
+                }, 1000);
+
+                localStorage.setItem('user', JSON.stringify(res.data.data))
+
+              } else {
+                Toast('账号密码错误');
+              }
+            }).catch(err => {
+            this._dismissLoading();
+
+            this._showToast('系统错误');
+          });
+
+        } else {
+          Toast('请输入账号密码');
         }
       },
       //保存用户信息
@@ -191,12 +194,13 @@
 </script>
 
 <style scoped>
-.bottom{
-      position: absolute;
+  .bottom {
+    position: absolute;
     bottom: 0px;
     left: 50%;
-    margin-left:-74px;
-}
+    margin-left: -74px;
+  }
+
   .send-btn {
     height: 26px;
     line-height: 24px;

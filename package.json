@@ -29,7 +29,7 @@
     "vue-router": "3.0.6",
     "vue-video-player": "^5.0.2",
     "vuex": "3.1.1",
-    "weixin-js-sdk": "^1.4.0-test"
+    "weixin-js-sdk": "^1.6.0"
   },
   "devDependencies": {
     "archiver": "^3.0.0",
