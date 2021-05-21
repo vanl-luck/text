@@ -40,6 +40,7 @@
 
 <script>
   import wx from "weixin-js-sdk";
+  import md5 from 'js-md5';
   import {
     Toast
   } from 'vant';
@@ -78,17 +79,17 @@
       },
     },
     created() {
-      //    if(window.location.search){
+         if(window.location.search){
 
-      //         let str = window.location.search.split("&")[0].split("=")[1]
+              let str = window.location.search.split("&")[0].split("=")[1]
 
-      //         this.wxcode = str
-      //         console.log(this.wxcode);
-      //       }else{
+              this.wxcode = str
+              console.log(this.wxcode);
+            }else{
 
-      //         window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect&connect_redirect=1"
+        window.location.href ='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://fun75s.natappfree.cc/&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect'
 
-      //       }
+            }
 
 
 
@@ -142,8 +143,9 @@
       },
       onLoginClick() {
         // location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1")
-        //  window.location.href =
-        if (this.userName && this.password) {
+       
+       
+       if (this.userName && this.password) {
 
           this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}&code=${this.wxcode}`).then(
             res => {
