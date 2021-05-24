@@ -27,8 +27,8 @@
         </van-col>
         <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
           class="receive-right">
-          <div>{{num.excellentIntegral}}</div>
-          <div class="light-txt receive-ins">优享积分</div>
+          <div>－</div>
+          <div class="light-txt receive-ins">安美汇</div>
         </van-col>
         <van-col span="8" @click="shareIn" class="receive-right">
           <div>{{num.shareIntegral}}</div>
