@@ -16,21 +16,21 @@
         </div>
         <div style="text-align: center;width:100%;color:#ababab">
           <div style="height:100px;" v-if="index==0">
-                   <!-- <p>招商奖励20%</p>
+            <!-- <p>招商奖励20%</p>
               <p>5盒熬夜医美面膜</p> -->
           </div>
-            <div style="height:100px;" v-if="index==1">
-                 <!-- <p>招商直推30% 8%</p>
+          <div style="height:100px;" v-if="index==1">
+            <!-- <p>招商直推30% 8%</p>
               <p>赠送vip名额1位</p>
               <p>时尚芭莎独家赞助口红组合</p> -->
-                  </div>
-            <div style="height:100px;" v-if="index==2">
+          </div>
+          <div style="height:100px;" v-if="index==2">
             <!-- <p>项目奖励30% 3%</p> -->
-              <!-- <p>20盒熬夜医美面膜</p> -->
+            <!-- <p>20盒熬夜医美面膜</p> -->
           </div>
           <div>
 
-                    <van-button type="primary" style="width: 125px;"  @click="pay(item.id)">点击加入</van-button>
+            <van-button type="primary" style="width: 125px;" @click="getList(index)">点击加入</van-button>
           </div>
         </div>
 
@@ -144,10 +144,12 @@
           },
         ],
         allProducts: [],
-        vip: ['../../../../static/img/vip/vip.jpeg', '../../../../static/img/vip/WechatIMG2143.jpeg',
+        vip: [
+          
+          '../../../../static/img/vip/vip.jpeg', '../../../../static/img/vip/WechatIMG2143.jpeg',
           '../../../../static/img/vip/私懂.jpeg'
         ],
-
+payInfo:{}
       };
     },
     computed: {
@@ -169,20 +171,21 @@
       }
     },
     created() {
-      this.$http.post(`api/user/query`).then(res => {
-        if (res.data.code == 200) {
-          this.allProducts = res.data.data
-          // this.allProducts.map((item,index)=>{
-          //   item.img=vip[index]
-          // })
-        }
-      }).catch(err => {
-        this._dismissLoading();
-        this._showToast('系统错误');
-      });
+
       this.clearLoc()
     },
     methods: {
+      getList(index){
+        let mebId=index
+      let phone=JSON.parse(localStorage.getItem("user")).phone
+     this.$http.get(`api/wx/pay/app?type=1&phone=${phone}&memberId=3`).then(res => {
+     
+        this.payInfo=res.data
+        this.wexinPay(res.data.data)
+      }).catch(err => {
+        this._showToast('系统错误');
+      });
+      },
       clearLoc() {
         this.$http.get(
           `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
@@ -193,59 +196,112 @@
         })
       },
 
-      wexinPay(data, cb, errorCb) {
+    async  wexinPay(index) {
+     
+console.log(      'getBrandWCPayRequest', {
+         "appId":index.appId,     //公众号名称，由商户传入     
+         "timeStamp":index.timeStamp,         //时间戳，自1970年以来的秒数     
+         "nonceStr":index.nonceStr, //随机串     
+         "package":index.package,     
+         "signType":index.signType,         //微信签名方式：     
+         "paySign":index.sign //微信签名 
+      },);
 
+           WeixinJSBridge.invoke(
+      'getBrandWCPayRequest', {
+         "appId":index.appId,     //公众号名称，由商户传入     
+         "timeStamp":index.timeStamp,         //时间戳，自1970年以来的秒数     
+         "nonceStr":index.nonceStr, //随机串     
+         "package":index.package,     
+         "signType":index.signType,         //微信签名方式：     
+         "paySign":index.sign //微信签名 
+      },
+      function(res){
+      if(res.err_msg == "get_brand_wcpay_request:ok" ){
+      // 使用以上方式判断前端返回,微信团队郑重提示：
+            //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+      } 
+   }); 
+        // const data={
+
+        //   appid: 'wx27c08fe4a23c5aa5',
+        //   mchid: '1609680603',
+        //   description: '花果山医美',
+        //   out_trade_no: 'H51217752501201407033233368018',
+        //   notify_url: 'http://fun75s.natappfree.cc/api/wx/pay/notify',
+        //   amount: {
+        //     total: 0.01
+        //   },
+        //   scene_info: {
+        //     "payer_client_ip": "159.75.232.235",
+        //     "h5_info": {
+        //       "type": "Wap"
+        //     }
+        //   }
+        
+        // }
+        // const url='/api.mch.weixin.qq.com/v3/pay/transactions/h5'
+        // this.$http.post(url,data).then(res=>{
+        //   console.log(res);
+        // })
+        // this.$http.post('/api.mch.weixin.qq.com/v3/pay/transactions/h5').then(res=>{
+        //   console.log(res);
+        // }))
 
         //获取后台传入的数据
-        let appId = data.appId;
-        let timestamp = data.timeStamp;
-        let nonceStr = data.nonceStr;
-        let signature = data.signature;
-        let packages = data.package;
-        let paySign = data.paySign;
-        let signType = data.signType;
-        console.log('发起微信支付')
-        //下面要发起微信支付了
-        wx.config({
-          debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-          appId: appId, // 必填，公众号的唯一标识
-          timestamp: timestamp, // 必填，生成签名的时间戳
-          nonceStr: nonceStr, // 必填，生成签名的随机串
-          signature: signature, // 必填，签名，见附录1
-          jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        });
-        wx.ready(function () {
-          wx.chooseWXPay({
-            timestamp: timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
-            nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
-            package: packages, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
-            signType: signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
-            paySign: paySign, // 支付签名
-            success: function (res) {
-              // 支付成功后的回调函数
-              cb(res);
-            },
-            fail: function (res) {
-              //失败回调函数
-              errorCb(res);
-            }
-          });
-        });
-        wx.error(function (res) {
-          // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-          /*alert("config信息验证失败");*/
-        });
+        // let appId = data.appId;
+        // let timestamp = data.timeStamp;
+        // let nonceStr = data.nonceStr;
+        // let signature = data.signature;
+        // let packages = data.package;
+        // let paySign = data.paySign;
+        // let signType = data.signType;
+        // console.log('发起微信支付')
+        // //下面要发起微信支付了
+        // wx.config({
+        //   debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        //   appId: appId, // 必填，公众号的唯一标识
+        //   timestamp: timestamp, // 必填，生成签名的时间戳
+        //   nonceStr: nonceStr, // 必填，生成签名的随机串
+        //   signature: signature, // 必填，签名，见附录1
+        //   jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        // });
+        // wx.ready(function () {
+        //   wx.chooseWXPay({
+        //     timestamp: timestamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+        //     nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
+        //     package: packages, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+        //     signType: signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+        //     paySign: paySign, // 支付签名
+        //     success: function (res) {
+        //       // 支付成功后的回调函数
+        //       cb(res);
+        //     },
+        //     fail: function (res) {
+        //       //失败回调函数
+        //       errorCb(res);
+        //     }
+        //   });
+        // });
+        // wx.error(function (res) {
+        //   // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        //   /*alert("config信息验证失败");*/
+        // });
       },
       pay(value) {
-        if (JSON.parse(localStorage.getItem('user')).payState == 1) {
-          this._showToast('已缴费');
-        } else {
-          this.$router.push({
-            name: 'test',
-            query: value,
-          });
-        }
-        console.log(value);
+        //h5微信支付
+        // this.$
+
+
+        // if (JSON.parse(localStorage.getItem('user')).payState == 1) {
+        //   this._showToast('已缴费');
+        // } else {
+        //   this.$router.push({
+        //     name: 'test',
+        //     query: value,
+        //   });
+        // }
+        // console.log(value);
         // this.$router.push('test')
 
 
@@ -399,8 +455,7 @@
     }
   }
 
-  .backImg {
-  }
+  .backImg {}
 
   .prod-item {
     padding: 12px;
