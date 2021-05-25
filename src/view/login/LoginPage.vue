@@ -159,11 +159,11 @@
                   this.$router.push({
                     name: 'mine',
                   })
-     location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1")
 
                 }, 1000);
 
                 localStorage.setItem('user', JSON.stringify(res.data.data))
+     location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://fun75s.natappfree.cc&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect")
 
               } else {
                 Toast('账号密码错误');
