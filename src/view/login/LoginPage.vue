@@ -3,8 +3,7 @@
     <!-- <van-nav-bar left-arrow @click-left="_routerBack" title="登录" fixed :z-index="10"></van-nav-bar> -->
     <div class="nav-con align-center login-con" :style="{'background-image':'url(static/img/login/login_back.png)'}">
       <div class="top-area">
-        <van-image src="../../../../static/img/微信图片_20191217153519.png" class="top-logo"></van-image>
-        <div>安美汇</div>
+        <van-image src="../../../../static/img/LOGO B.png" class="top-logo"></van-image>
       </div>
       <!--用户名密码登录-->
       <div v-if="loginWay==1">
@@ -79,17 +78,16 @@
       },
     },
     created() {
-         if(window.location.search){
+      if (window.location.search) {
 
-              let str = window.location.search.split("&")[0].split("=")[1]
+        let str = window.location.search.split("&")[0].split("=")[1]
 
-              this.wxcode = str
-              console.log(this.wxcode);
-            }else{
+        this.wxcode = str
+        console.log(this.wxcode);
+      } else {
 
-        window.location.replace('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://fun75s.natappfree.cc/&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect')
 
-            }
+      }
 
 
 
@@ -142,14 +140,13 @@
         //  this._routeReplace('https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect');
       },
       onLoginClick() {
-        // location.replace("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1")
-       
-       
-       if (this.userName && this.password) {
+
+
+        if (this.userName && this.password) {
 
           this.$http.get(`api/user/login?phone=${this.userName}&password=${this.password}&code=${this.wxcode}`).then(
             res => {
-   
+
               if (res.data.code == 200) {
                 this._showLoading();
                 console.log(res.data.data.headUrl);
@@ -162,6 +159,9 @@
                   this.$router.push({
                     name: 'mine',
                   })
+                  location.replace(
+                    "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.anmeihui.cn/&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect&connect_redirect=1"
+                    )
 
                 }, 1000);
 
@@ -227,7 +227,7 @@
   }
 
   .top-logo {
-    width: 100px;
+    width: 180px;
     margin: 16px 0;
   }
 
