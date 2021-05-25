@@ -10,11 +10,11 @@
     </div>
     <div>
       <div v-for="(item,index) in zsImg" :key="index" style="color:#69696a" class="borderCard" v-if="item.state==0">
-    
-        <div class="tags" >
+
+        <div class="tags">
           <img :src="item.img" alt="" style="width: 185px;height:220px">
         </div>
-        <div  style="text-align: center;width:100%;color:#ababab">
+        <div style="text-align: center;width:100%;color:#ababab">
           <div style="height:100px;" v-if="index==0">
           </div>
           <div style="height:100px;" v-if="index==1">
@@ -23,7 +23,7 @@
           </div>
           <div>
 
-            <van-button  type="primary" style="width: 125px;" @click="getList(item.id)">点击加入</van-button>
+            <van-button type="primary" style="width: 125px;" @click="getList(item.id)">点击加入</van-button>
           </div>
         </div>
 
@@ -65,7 +65,7 @@
     </div>
 
 
- 
+
   </div>
 </template>
 
@@ -123,7 +123,7 @@
           },
 
         ],
-        zsImg:[],
+        zsImg: [],
         payInfo: {}
       };
     },
@@ -148,22 +148,36 @@
     created() {
 
       this.getMemberInfo()
-      this.clearLoc()
+      // this.clearLoc()
+
     },
     methods: {
+      getInfo() {
+        const url = '/api/user/queryUserVo'
+        const data = {
+          userId: JSON.parse(localStorage.getItem('user')).id
+        }
+        this.$http.post(url, data).then(res => {
+          if (res.data.code == 200) {
+            // localStorage.clear()
+            localStorage.setItem('user', JSON.stringify(res.data.data[0]))
+
+          }
+        })
+      },
       getMemberInfo() {
         const url = '/api/user/query'
         const data = {
           userId: JSON.parse(localStorage.getItem('user')).id
         }
         this.$http.post(url, data).then(res => {
-          if(res.data.code==200){
-            res.data.data.forEach((item,index) => {
-              item.img=this.vip[index].img
+          if (res.data.code == 200) {
+            res.data.data.forEach((item, index) => {
+              item.img = this.vip[index].img
               return item
             });
-              this.zsImg=res.data.data
-              console.log(this.zsImg);
+            this.zsImg = res.data.data
+            console.log(this.zsImg);
           }
         })
       },
@@ -177,17 +191,19 @@
           this._showToast('系统错误');
         });
       },
-      clearLoc() {
-        this.$http.get(
-          `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
-        ).then(res => {
-          localStorage.clear()
-          localStorage.setItem('user', JSON.stringify(res.data.data))
+      // clearLoc() {
+      //   this.$http.get(
+      //     `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
+      //   ).then(res => {
+      //     console.log(res,'s');
+      //     localStorage.clear()
+      //     localStorage.setItem('user', JSON.stringify(res.data.data))
 
-        })
-      },
+      //   })
+      // },
 
       async wexinPay(index) {
+        let that=this
         WeixinJSBridge.invoke(
           'getBrandWCPayRequest', {
             "appId": index.appId, //公众号名称，由商户传入     
@@ -198,7 +214,11 @@
             "paySign": index.sign //微信签名 
           },
           function (res) {
+            
+            that.getInfo()
+            that.getMemberInfo()
             if (res.err_msg == "get_brand_wcpay_request:ok") {
+console.log(1);
               // 使用以上方式判断前端返回,微信团队郑重提示：
               //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
             }

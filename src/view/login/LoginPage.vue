@@ -86,7 +86,7 @@
               console.log(this.wxcode);
             }else{
 
-window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://fun75s.natappfree.cc/&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect'
+window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://fun75s.natappfree.cc/&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect'
             }
 
 

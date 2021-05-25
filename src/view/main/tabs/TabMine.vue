@@ -8,7 +8,7 @@
       </div>
     </div>
     <!--下部内容-->
-    <div class="nav-con " style="background: #f0f0f0;" >
+    <div class="nav-con " style="background: #fff;" >
       <div class="amount-con " style="display:flex;">
         <van-image style="left:30px;top:10px;width: 66px;height: 66px;" round width="15rem" height="15rem" :src="mineUrl" />
 
@@ -332,7 +332,7 @@
 
   .amount-con {
 
-    background: #d35562;
+    background: #fff;
     display: flex;
     border-radius: 30px;
     margin-top: -20px;
@@ -357,7 +357,7 @@
   }
 
   .top-nav {
-    background-color: #d35562;
+    background-color: #fff;
     position: fixed;
     height: 50px;
     z-index: 10;
