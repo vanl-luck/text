@@ -51,9 +51,9 @@
           </van-col>
         </van-row>
       </div>
-      <div class="img-responsive">
+      <!-- <div class="img-responsive">
         <img src="../../../../static/img/product/微信图片_20191223085800.jpg" alt="">
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

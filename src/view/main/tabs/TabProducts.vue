@@ -9,12 +9,12 @@
     <div class="img-responsive">
     </div>
     <div>
-      <div v-for="(item,index) in zsImg" :key="index" style="color:#69696a" class="borderCard">
+      <div v-for="(item,index) in zsImg" :key="index" style="color:#69696a" class="borderCard" v-if="item.state==0">
     
-        <div class="tags" v-if="item.state==0">
+        <div class="tags" >
           <img :src="item.img" alt="" style="width: 185px;height:220px">
         </div>
-        <div v-if="item.state==0" style="text-align: center;width:100%;color:#ababab">
+        <div  style="text-align: center;width:100%;color:#ababab">
           <div style="height:100px;" v-if="index==0">
           </div>
           <div style="height:100px;" v-if="index==1">
@@ -236,7 +236,7 @@
 
   .borderCard {
     display: flex;
-    border: 1px solid #d7e6e2;
+    // border: 1px solid #d7e6e2;
     background: white;
     margin: 10px
   }
