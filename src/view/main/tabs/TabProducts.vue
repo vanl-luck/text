@@ -10,27 +10,20 @@
     </div>
     <div>
       <div v-for="(item,index) in zsImg" :key="index" style="color:#69696a" class="borderCard">
-        <!-- <van-card > -->
-        <div class="tags">
+    
+        <div class="tags" v-if="item.state==0">
           <img :src="item.img" alt="" style="width: 185px;height:220px">
         </div>
-        <div style="text-align: center;width:100%;color:#ababab">
+        <div v-if="item.state==0" style="text-align: center;width:100%;color:#ababab">
           <div style="height:100px;" v-if="index==0">
-            <!-- <p>招商奖励20%</p>
-              <p>5盒熬夜医美面膜</p> -->
           </div>
           <div style="height:100px;" v-if="index==1">
-            <!-- <p>招商直推30% 8%</p>
-              <p>赠送vip名额1位</p>
-              <p>时尚芭莎独家赞助口红组合</p> -->
           </div>
           <div style="height:100px;" v-if="index==2">
-            <!-- <p>项目奖励30% 3%</p> -->
-            <!-- <p>20盒熬夜医美面膜</p> -->
           </div>
           <div>
 
-            <van-button v-if="item.state==0" type="primary" style="width: 125px;" @click="getList(item.id)">点击加入</van-button>
+            <van-button  type="primary" style="width: 125px;" @click="getList(item.id)">点击加入</van-button>
           </div>
         </div>
 
