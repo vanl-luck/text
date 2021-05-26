@@ -25,7 +25,7 @@
           <div>{{num.rewardIntegral}}</div>
           <div class="light-txt receive-ins">奖励积分</div>
         </van-col>
-        <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
+        <van-col span="8" 
           class="receive-right">
           <div>-</div>
           <div class="light-txt receive-ins">花果山</div>
