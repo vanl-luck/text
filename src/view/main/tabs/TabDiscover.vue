@@ -2,7 +2,7 @@
   <div>
     <!-- <van-nav-bar title="甄美纪医疗美容连锁机构" fixed :z-index="10"></van-nav-bar> -->
 
-    <div >
+    <div>
       <!--顶部图片-->
       <van-swipe :autoplay="3000" style="width:100%;height: 230px;">
         <van-swipe-item v-for="(image, index) in imgData" :key="index">
@@ -56,7 +56,11 @@
       </div> -->
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
-          <img class="laze-img" v-for="img in manageImg" v-lazy="img">
+          <div v-for="(img,index) in manageImg" :key="index">
+            <img class="laze-img" :src="img">
+            <!-- <img :src="img" alt=""> -->
+          </div>
+
         </van-grid-item>
       </van-grid>
       <!-- <van-grid :border="false" :column-num="1" :gutter="10">
@@ -99,18 +103,21 @@
       return {
         // hospital: '../../../../static/img/chain/图片9.png',
         manageImg: [
-          "../../../../static/img/chain/图片1.png",
-          "../../../../static/img/chain/图片2.png",
-          "../../../../static/img/chain/图片3.png",
-          "../../../../static/img/chain/图片4.png",
-          "../../../../static/img/chain/图片5.png",
-          '../../../../static/img/chain/图片6.png',
-          '../../../../static/img/chain/图片7.png',
-          '../../../../static/img/chain/图片10.png',
-          '../../../../static/img/chain/图片11.png',
-          '../../../../static/img/chain/图片12.png',
-          '../../../../static/img/chain/图片13.png',
-          '../../../../static/img/chain/图片14.png',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%871.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%872.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%873.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%874.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%875.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%876.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%877.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%878.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%879.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%8710.jpg',
+          'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%8711.jpg',
+                    'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%8712.jpg',
+                              'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%8713.jpg',
+                                        'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/%E5%9B%BE%E7%89%8714.jpg',
+
 
         ],
         imgData: ['../../../../static/img/doctor/WechatIMG1640.jpeg',
@@ -123,7 +130,7 @@
           '../../../../static/img/doctor/WechatIMG1648.jpeg',
           '../../../../static/img/doctor/WechatIMG1649.jpeg'
         ],
-      
+
         vedioData: [{
             src: "../../../../static/video/2.mp4",
             type: 'video/mp4' //播放hls流

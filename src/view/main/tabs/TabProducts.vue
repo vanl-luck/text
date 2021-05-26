@@ -110,15 +110,15 @@
         vip: [
 
           {
-            img: '../../../../static/img/vip/980.png',
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/980.png',
             id: 3
           },
           {
-            img: '../../../../static/img/vip/10000.png',
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/10000.png',
             id: 4
           },
           {
-            img: '../../../../static/img/vip/30000.png',
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/30000.png',
             id: 5
           },
 

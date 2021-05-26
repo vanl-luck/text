@@ -13,14 +13,14 @@
 
         <div v-for="(item,index) in yList" 　v-if="yList.length!=0">
 
-          <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png">
+          <van-card title="　" thumb="../../../../static/img/LOGO B.png">
             <div slot="tags">
               <div>用户名：{{item.userName}} <span style="color:red">({{item.memberName}})</span> </div>
               <div>加入时间：{{item.registrationTime}} </div>
               <div>手机号：{{item.phone}} </div>
               <div>消费额：{{item.sumAmount}} </div>
               <div v-for="(domain,index) in item.list">
-                <van-card title="　" thumb="../../../../static/img/微信图片_20191217153519.png"
+                <van-card title="　" thumb="../../../../static/img/LOGO B.png"
                   style="margin-left: -117px;">
                   <div slot="tags">
                     <div>用户名：{{domain.userName}} <span style="color:red">({{domain.memberName}})</span> </div>
