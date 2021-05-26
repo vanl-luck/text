@@ -24,10 +24,7 @@ Vue.use(Lazyload);
 Vue.use(VueClipboards);
 Vue.use(ScrollPosition);
 Vue.mixin(VueMixin);
-import vConsole from 'vconsole'
-    
-// 移动端打印
-Vue.prototype.$vConsole = new vConsole()
+// 
 Vue.prototype.$http = stream;
 Vue.prototype.$urls = urls;
 

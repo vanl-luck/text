@@ -38,7 +38,7 @@
         </div>
       </div>
       <!--下部应用入口-->
-      <div>
+      <!-- <div>
         <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
           :options="playerOptions"></video-player>
         <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
@@ -53,7 +53,7 @@
           :options="playerOptions5"></video-player>
         <video-player class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true"
           :options="playerOptions7"></video-player>
-      </div>
+      </div> -->
       <van-grid :border="false" :column-num="1" :gutter="10">
         <van-grid-item>
           <img class="laze-img" v-for="img in manageImg" v-lazy="img">
