@@ -9,24 +9,17 @@
     <div class="img-responsive">
     </div>
     <div>
-      <div v-for="(item,index) in vip" :key="index" style="color:#69696a" class="borderCard">
-        <!-- <van-card > -->
+      <div v-for="(item,index) in zsImg" :key="index" style="color:#69696a" class="borderCard" v-if="item.state==0">
+
         <div class="tags">
           <img :src="item.img" alt="" style="width: 185px;height:220px">
         </div>
         <div style="text-align: center;width:100%;color:#ababab">
           <div style="height:100px;" v-if="index==0">
-            <!-- <p>招商奖励20%</p>
-              <p>5盒熬夜医美面膜</p> -->
           </div>
           <div style="height:100px;" v-if="index==1">
-            <!-- <p>招商直推30% 8%</p>
-              <p>赠送vip名额1位</p>
-              <p>时尚芭莎独家赞助口红组合</p> -->
           </div>
           <div style="height:100px;" v-if="index==2">
-            <!-- <p>项目奖励30% 3%</p> -->
-            <!-- <p>20盒熬夜医美面膜</p> -->
           </div>
           <div>
 
@@ -70,39 +63,9 @@
       </div>
 
     </div>
-    <!-- <div class="imgBackground" style="">
-      </div> -->
 
-    <!-- </span>
 
-    <!-- <div class="top-fixed">
-      <van-nav-bar :title="$t('tab_products')" fixed :z-index="10"></van-nav-bar>
-      <div class="nav-con navbar-con">
-        <van-tabs v-model="activeSort" class="sort-all" sticky @change="onTabChange" line-width="33%">
-          <van-tab :title="it_so.title" v-for="(it_so, idx) in sortItems" :key="idx">
-            <div class="prod-item click-box" v-for="(it_po,idx_p) in getProductList(idx)"
-                 :key="idx_p" @click="onProductClick(it_po)">
-              <van-row>
-                <van-col span="12" class="prod-rate">
-                  <div class="red-txt rate-txt"><span class="rate-big">{{it_po.rate}}</span>%+{{it_po.add}}%</div>
-                  <div class="light-txt rate-ins">预期年化收益率</div>
-                </van-col>
-                <van-col span="12" class="prod-ins">
-                  <div class="prod-title">{{it_po.name}}</div>
-                  <div class="prod-tag">期限{{it_po.days}}天</div>
-                </van-col>
-              </van-row>
-              <van-progress :percentage="it_po.percent" color="#ff6611" class="prod-progress" :show-pivot="false">
-              </van-progress>
-              <div class="pro-amount">
-                <div>项目总额180万</div>
-                <div>剩余可投<span class="red-txt">75万</span></div>
-              </div>
-            </div>
-          </van-tab>
-        </van-tabs>
-      </div>
-    </div> -->
+
   </div>
 </template>
 
@@ -145,18 +108,22 @@
         ],
         allProducts: [],
         vip: [
+
           {
-            img: '../../../../static/img/vip/vip.jpeg',
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/980.png',
             id: 3
-          }, {
-            img: '../../../../static/img/vip/WechatIMG2143.jpeg',
+          },
+          {
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/10000.png',
             id: 4
-          }, {
-            img: '../../../../static/img/vip/私懂.jpeg',
+          },
+          {
+            img: 'http://amez5.oss-cn-shenzhen.aliyuncs.com/z/1/30000.png',
             id: 5
           },
 
         ],
+        zsImg: [],
         payInfo: {}
       };
     },
@@ -180,13 +147,43 @@
     },
     created() {
 
-      this.clearLoc()
+      this.getMemberInfo()
+      // this.clearLoc()
+
     },
     methods: {
+      getInfo() {
+        const url = '/api/user/queryUserVo'
+        const data = {
+          userId: JSON.parse(localStorage.getItem('user')).id
+        }
+        this.$http.post(url, data).then(res => {
+          if (res.data.code == 200) {
+            // localStorage.clear()
+            localStorage.setItem('user', JSON.stringify(res.data.data[0]))
+
+          }
+        })
+      },
+      getMemberInfo() {
+        const url = '/api/user/query'
+        const data = {
+          userId: JSON.parse(localStorage.getItem('user')).id
+        }
+        this.$http.post(url, data).then(res => {
+          if (res.data.code == 200) {
+            res.data.data.forEach((item, index) => {
+              item.img = this.vip[index].img
+              return item
+            });
+            this.zsImg = res.data.data
+            console.log(this.zsImg);
+          }
+        })
+      },
       getList(index) {
-        let mebId = index
         let phone = JSON.parse(localStorage.getItem("user")).phone
-        this.$http.get(`api/wx/pay/app?type=1&phone=${phone}&memberId=${mebId}`).then(res => {
+        this.$http.get(`api/wx/pay/app?type=1&phone=${phone}&memberId=${index}`).then(res => {
 
           this.payInfo = res.data
           this.wexinPay(res.data.data)
@@ -194,17 +191,19 @@
           this._showToast('系统错误');
         });
       },
-      clearLoc() {
-        this.$http.get(
-          `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
-        ).then(res => {
-          localStorage.clear()
-          localStorage.setItem('user', JSON.stringify(res.data.data))
+      // clearLoc() {
+      //   this.$http.get(
+      //     `api/user/login?phone=${JSON.parse(localStorage.getItem('user')).phone}&password=${JSON.parse(localStorage.getItem('user')).password}`
+      //   ).then(res => {
+      //     console.log(res,'s');
+      //     localStorage.clear()
+      //     localStorage.setItem('user', JSON.stringify(res.data.data))
 
-        })
-      },
+      //   })
+      // },
 
       async wexinPay(index) {
+        let that=this
         WeixinJSBridge.invoke(
           'getBrandWCPayRequest', {
             "appId": index.appId, //公众号名称，由商户传入     
@@ -215,12 +214,19 @@
             "paySign": index.sign //微信签名 
           },
           function (res) {
+            
+            that.getInfo()
+            that.getMemberInfo()
             if (res.err_msg == "get_brand_wcpay_request:ok") {
+console.log(1);
               // 使用以上方式判断前端返回,微信团队郑重提示：
               //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
             }
           });
+
       },
+
+
       onProductClick(item) {
         this._routePushQ('ProductDetail', {
           id: item.id
@@ -250,7 +256,7 @@
 
   .borderCard {
     display: flex;
-    border: 1px solid #d7e6e2;
+    // border: 1px solid #d7e6e2;
     background: white;
     margin: 10px
   }

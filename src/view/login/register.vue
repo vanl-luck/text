@@ -3,7 +3,7 @@
     <!-- <van-nav-bar left-arrow @click-left="_routerBack" title="登录" fixed :z-index="10"></van-nav-bar> -->
     <div class="nav-con align-center login-con" :style="{'background-image':'url(static/img/login/login_back.png)'}">
       <div class="top-area">
-        <van-image src="../../../../static/img/微信图片_20191217153519.png" class="top-logo"></van-image>
+        <van-image src="../../../../static/img/LOGO B.png" class="top-logo"></van-image>
         <div>账号注册</div>
       </div>
       <!--用户名密码登录-->
@@ -55,7 +55,9 @@
 
 <script>
   // import { Notify } from 'vant';
-import { Dialog } from 'vant';
+  import {
+    Dialog
+  } from 'vant';
   import {
     Toast
   } from 'vant';
@@ -92,17 +94,17 @@ import { Dialog } from 'vant';
       },
     },
     mounted() {
-      localStorage.clear()  
-     if(!this.$route.query.userId){
-       
-       Dialog.alert({
-    title: '错误',
-    message: '没有邀请人不能注册'
-  }).then(() => {
-    this._routePush('LoginPage');
+      localStorage.clear()
+      if (!this.$route.query.userId) {
 
-  });
-     }
+        Dialog.alert({
+          title: '错误',
+          message: '没有邀请人不能注册'
+        }).then(() => {
+          this._routePush('LoginPage');
+
+        });
+      }
       console.log(window.location.href);;
     },
     beforeDestroy() {
@@ -134,46 +136,47 @@ import { Dialog } from 'vant';
       // 模拟登陆
       onLoginClick() {
 
-        if(this.phone&&this.name&&this.password){
-          var phone=/^[1]([3-9])[0-9]{9}$/
-          if(phone.test(this.phone)){
-              let param = {
-          userName: this.name,
-          phone: this.phone,
-          password: this.password,
+        if (this.phone && this.name && this.password) {
+          var phone = /^[1]([3-9])[0-9]{9}$/
+          if (phone.test(this.phone)) {
+            let param = {
+              userName: this.name,
+              phone: this.phone,
+              password: this.password,
 
-        }
-        if (this.$route.query.userId) {
-          param.extensionId = this.$route.query.userId
-        }
-        let config = {
-          'Content-Type': 'application/json',
-        };
-        this.$http.post(`api/user/register`, param).then(res => {
-          if (res.data.code == 200) {
-            this._showLoading();
-            setTimeout(() => {
-              Toast('注册成功');
-              this._dismissLoading('注册成功');
-         window.location.href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
-            }, 1000);
+            }
+            if (this.$route.query.userId) {
+              param.extensionId = this.$route.query.userId
+            }
+            let config = {
+              'Content-Type': 'application/json',
+            };
+            this.$http.post(`api/user/register`, param).then(res => {
+              if (res.data.code == 200) {
+                this._showLoading();
+                setTimeout(() => {
+                  Toast('注册成功');
+                  this._dismissLoading('注册成功');
+                  window.location.href =
+                    'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAwMTM3OTMzNQ==#wechat_redirect'
+                }, 1000);
+
+              } else {
+                Toast(res.message);
+              }
+            }).catch(err => {
+              this._dismissLoading();
+              this._showToast('系统错误');
+            });
 
           } else {
-            Toast('你的输入有误');
+            Toast('请输入正确的手机号');
           }
-        }).catch(err => {
-          this._dismissLoading();
-          this._showToast('系统错误');
-        });
-              
-          }else{
-             Toast('请输入正确的手机号');
-          }
-          }else{
+        } else {
           Toast('请输入完整的账号信息');
 
         }
-    
+
 
       },
       //保存用户信息

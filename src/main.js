@@ -24,7 +24,7 @@ Vue.use(Lazyload);
 Vue.use(VueClipboards);
 Vue.use(ScrollPosition);
 Vue.mixin(VueMixin);
-
+// 
 Vue.prototype.$http = stream;
 Vue.prototype.$urls = urls;
 

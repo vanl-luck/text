@@ -9,9 +9,9 @@
     <router-view v-if="!$route.meta.keepAlive" class="main-router-view">
     </router-view>
     <!--下方的TabBar-->
-    <van-tabbar v-model="tabBarSelect">
+    <van-tabbar v-model="tabBarSelect" active-color="#000000">
       <!--TabBar项目-->
-      <van-tabbar-item v-for="(item, i) in tabItemList" :key="i" :to="item.to" replace>
+      <van-tabbar-item v-for="(item, i) in tabItemList" :key="i" :to="item.to" replace >
         <div class="tab-txt">{{$t(item.name)}}</div>
         <img :src="getTabIconSrc(item, props.active)" slot="icon" slot-scope="props" class="icon-img" />
       </van-tabbar-item>

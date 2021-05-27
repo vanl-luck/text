@@ -8,7 +8,7 @@
       </div>
     </div>
     <!--下部内容-->
-    <div class="nav-con " style="background: #f0f0f0;" >
+    <div class="nav-con " style="background: #fff;" >
       <div class="amount-con " style="display:flex;">
         <van-image style="left:30px;top:10px;width: 66px;height: 66px;" round width="15rem" height="15rem" :src="mineUrl" />
 
@@ -25,10 +25,10 @@
           <div>{{num.rewardIntegral}}</div>
           <div class="light-txt receive-ins">奖励积分</div>
         </van-col>
-        <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
+        <van-col span="8" 
           class="receive-right">
-          <div>－</div>
-          <div class="light-txt receive-ins">安美汇</div>
+          <div>-</div>
+          <div class="light-txt receive-ins">花果山</div>
         </van-col>
         <van-col span="8" @click="shareIn" class="receive-right">
           <div>{{num.shareIntegral}}</div>
@@ -51,9 +51,9 @@
           </van-col>
         </van-row>
       </div>
-      <div class="img-responsive">
+      <!-- <div class="img-responsive">
         <img src="../../../../static/img/product/微信图片_20191223085800.jpg" alt="">
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -332,7 +332,7 @@
 
   .amount-con {
 
-    background: #d35562;
+    background: #fff;
     display: flex;
     border-radius: 30px;
     margin-top: -20px;
@@ -357,7 +357,7 @@
   }
 
   .top-nav {
-    background-color: #d35562;
+    background-color: #fff;
     position: fixed;
     height: 50px;
     z-index: 10;
