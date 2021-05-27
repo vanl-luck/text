@@ -85,9 +85,9 @@
         this.wxcode = str
         console.log(this.wxcode);
       } else {
-
+        let callbackUrl = encodeURIComponent('http://www.bwtc.top/#/main/mine');
         window.location.href =
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=http://www.bwtc.top/&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect'
+          `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx27c08fe4a23c5aa5&redirect_uri=${callbackUrl}&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect`
       }
 
 

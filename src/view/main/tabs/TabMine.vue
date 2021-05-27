@@ -155,18 +155,18 @@
     //   },
     methods: {
       shareIn() {
-        if (JSON.parse(localStorage.getItem('user')).sumAmount > 10000) {
-
-          this.$router.push({
-            path: '/withdraw',
-            query: {
-              money: this.num.shareIntegral,
-              name: '共享积分'
-            }
-          })
-        } else {
-          this._showToast('不满足消费金额');
-        }
+        
+                  this.$router.push({
+                    path: '/withdraw',
+                    query: {
+                      money: this.num.shareIntegral,
+                      name: '共享积分'
+                    }
+                  })
+        // if (JSON.parse(localStorage.getItem('user')).sumAmount > 10000) {
+        // } else {
+        //   this._showToast('不满足消费金额');
+        // }
 
       },
       //更改积分的变动
