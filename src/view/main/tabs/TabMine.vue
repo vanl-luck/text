@@ -25,10 +25,10 @@
           <div>{{num.rewardIntegral}}</div>
           <div class="light-txt receive-ins">奖励积分</div>
         </van-col>
-        <van-col span="8" 
+    <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
           class="receive-right">
-          <div>-</div>
-          <div class="light-txt receive-ins">花果山</div>
+          <div>{{num.excellentIntegral}}</div>
+          <div class="light-txt receive-ins">优享积分</div>
         </van-col>
         <van-col span="8" @click="shareIn" class="receive-right">
           <div>{{num.shareIntegral}}</div>
@@ -155,7 +155,7 @@
     //   },
     methods: {
       shareIn() {
-        if (JSON.parse(localStorage.getItem('user')).sumAmount > 10000) {
+        if (JSON.parse(localStorage.getItem('user')).payState ==1) {
 
           this.$router.push({
             path: '/withdraw',
