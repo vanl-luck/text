@@ -7,9 +7,9 @@
       <div class="explain">
         <p>
           <br>
-          <span style="color:#777f7f;font-size:14px;">
+          <!-- <span style="color:#777f7f;font-size:14px;">
             奖励积分
-          </span>
+          </span> -->
         </p>
         <div>
           <p class="fontCor">
@@ -18,23 +18,23 @@
         </div>
       </div>
       <van-collapse v-model="activeNames">
-        <van-collapse-item title="积分流水" name="1">
+        <van-collapse-item :title="'招商积分'" name="1">
           <div>
             <p class="running"> </p>
-            <div v-for="(item,index) in explain">
+            <div v-for="(item,index) in explain" :key="index">
               <van-panel
-              v-if="item.relationship!=9"
-                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.relationship+')'"
+              v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
             </div>
           </div>
         </van-collapse-item>
-        <van-collapse-item title="优享积分" name="2">
+        <van-collapse-item title="种草积分" name="2">
           <div>
-            <div v-for="(item,index) in explain">
+            <div v-for="(item,index) in explain" :key="index">
               <van-panel
-              v-if="item.relationship==9"
+              v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+'优享积分'+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
@@ -56,11 +56,27 @@
         activeNames: [],
         explain: [],
         memberName: '<span></span>',
-        rewardIntegral: this.$route.params.rewardIntegral
+        rewardIntegral: this.$route.params.rewardIntegral,
+        num:{
+      rewardIntegral: '',
+          excellentIntegral: '',
+          shareIntegral: '',
+        }
       }
     },
+        computed: {
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+      excellentIntegral() {
+        return this.num.excellentIntegral
+      },
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+    },
     methods: {
-      num() {
+      nums() {
 
         this.$http.post(`api/lyPay/selectExamineRecord`, {
           userId: JSON.parse(localStorage.getItem('user')).id,
@@ -76,31 +92,34 @@
 
 
             if (item.relationship == 1) {
-              item.relationship = '直推'
+              item.name = '直推'
             }
             if (item.relationship == 2) {
-              item.relationship = '间推'
+              item.name = '间推'
             }
             if (item.relationship == 3) {
-              item.relationship = 'VIP团队收益'
+              item.name = 'VIP团队收益'
             }
             if (item.relationship == 4) {
-              item.relationship = '代言人团队收益'
+              item.name = '代言人团队收益'
             }
-            if (item.relationship == 5) {
-              item.relationship = '终端直推提成'
+            if (item.relationship == 9) {
+              item.name = '优享积分直推'
             }
             if (item.relationship == 6) {
-              item.relationship = '终端间推提成'
+              item.name = '优享积分间推'
             }
             if (item.relationship == 7) {
-              item.relationship = '终端代言人团队奖'
+              item.name = 'KOC 团队收益'
             }
             if (item.relationship == 8) {
-              item.relationship = '终端终端VIP团队奖'
+              item.name = 'KOL 团队收益'
             }
+            //        if (item.relationship == 9) {
+            //   item.name = '终端终端VIP团队奖'
+            // }
             //      if (item.relationship == 9) {
-            //   item.relationship = '优享积分'
+            //   item.name = '优享积分'
             // }
 
           })
@@ -109,13 +128,13 @@
       }
     },
     created() {
-      this.num()
+      this.nums()
       console.log(JSON.parse(sessionStorage.getItem('rewardIntegral')));
       if (!this.rewardIntegral) {
         this.rewardIntegral = JSON.parse(sessionStorage.getItem('rewardIntegral'))
       }
-
-      console.log(this.$route.params);
+      // this.num=JSON.parse(localStorage.getItem('user'))
+      console.log(this.num);
     }
 
   }

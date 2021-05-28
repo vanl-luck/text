@@ -23,12 +23,12 @@
       <van-row class="receive-all">
         <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.rewardIntegral,name:'奖励积分'}});">
           <div>{{num.rewardIntegral}}</div>
-          <div class="light-txt receive-ins">奖励积分</div>
+          <div class="light-txt receive-ins">招商积分</div>
         </van-col>
     <van-col span="8" @click="$router.push({path: '/withdraw', query:{money: num.excellentIntegral,name:'优享积分'}});"
           class="receive-right">
           <div>{{num.excellentIntegral}}</div>
-          <div class="light-txt receive-ins">优享积分</div>
+          <div class="light-txt receive-ins">种草积分</div>
         </van-col>
         <van-col span="8" @click="shareIn" class="receive-right">
           <div>{{num.shareIntegral}}</div>
@@ -74,7 +74,7 @@
           {
             icon: 'mine_app_icon6.png',
             flag: '',
-            title: '消费明细',
+            title: '升级记录',
             id: 2
           },
           {
@@ -177,8 +177,8 @@
           localStorage.clear()
           localStorage.setItem('user', JSON.stringify(res.data.data))
           this.user = res.data.data
-          this.num.rewardIntegral = res.data.data.rewardIntegral
           sessionStorage.setItem('rewardIntegral', this.num.rewardIntegral)
+          this.num.rewardIntegral = res.data.data.rewardIntegral
           this.num.excellentIntegral = res.data.data.excellentIntegral
           this.num.shareIntegral = res.data.data.shareIntegral
         })
