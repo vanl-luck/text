@@ -177,8 +177,8 @@
           localStorage.clear()
           localStorage.setItem('user', JSON.stringify(res.data.data))
           this.user = res.data.data
-          this.num.rewardIntegral = res.data.data.rewardIntegral
           sessionStorage.setItem('rewardIntegral', this.num.rewardIntegral)
+          this.num.rewardIntegral = res.data.data.rewardIntegral
           this.num.excellentIntegral = res.data.data.excellentIntegral
           this.num.shareIntegral = res.data.data.shareIntegral
         })
