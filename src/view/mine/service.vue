@@ -87,7 +87,7 @@
               }
             })
           } else {
-            this.$toast("网络错误");
+             this.$toast(res.data.message);
           }
 
         })

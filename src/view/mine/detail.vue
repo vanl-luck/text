@@ -104,7 +104,7 @@
                 this.$toast("删除成功");
                 // this.allData = res.data.data.list
               } else {
-                this.$toast("网络错误");
+                  this.$toast(res.data.message);
               }
             })
             .catch(function (error) {
@@ -124,7 +124,7 @@
             if (res.data.code == 200) {
               this.allData = res.data.data.list
             } else {
-              this.$toast("网络错误");
+               this.$toast(res.data.message);
             }
           })
           .catch(function (error) {

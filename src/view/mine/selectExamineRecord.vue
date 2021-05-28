@@ -13,29 +13,28 @@
         </p>
         <div>
           <p class="fontCor">
-            {{rewardIntegral}}
+            {{getzcIntegrals}}
           </p>
         </div>
       </div>
       <van-collapse v-model="activeNames">
-        <van-collapse-item :title="'招商积分'" name="1">
+        <van-collapse-item :title="'招商积分'+'('+getzcIntegral(1)+')'" name="1">
           <div>
             <p class="running"> </p>
             <div v-for="(item,index) in explain" :key="index">
               <van-panel
-              v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
+                v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
             </div>
           </div>
         </van-collapse-item>
-        <van-collapse-item title="种草积分" name="2">
+        <van-collapse-item :title="'种草积分'+'('+getzcIntegral(2)+')'" name="2">
           <div>
             <div v-for="(item,index) in explain" :key="index">
-              <van-panel
-              v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
-                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+'优享积分'+')'"
+              <van-panel v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+getName(item.name)+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
             </div>
@@ -57,14 +56,14 @@
         explain: [],
         memberName: '<span></span>',
         rewardIntegral: this.$route.params.rewardIntegral,
-        num:{
-      rewardIntegral: '',
+        num: {
+          rewardIntegral: '',
           excellentIntegral: '',
           shareIntegral: '',
         }
       }
     },
-        computed: {
+    computed: {
       rewardIntegral() {
         return this.num.rewardIntegral
       },
@@ -74,14 +73,49 @@
       rewardIntegral() {
         return this.num.rewardIntegral
       },
+      getzcIntegral(){
+         return function (a) {
+          let num=''
+        this.explain.forEach(item=>{
+          if(a==1){
+
+            if(item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5){
+              num= + item.rewardIntegral
+          }
+            }else if(a==2){
+                   if(item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9){
+            num= + item.rewardIntegral
+          }
+            }else if(a==3){
+              // console.log(a,'1221');
+               num= + item.rewardIntegral
+            }
+        })
+        return num
+    }
+  
+      },
+      getzcIntegrals(){
+      return  this.getzcIntegral(1)+this.getzcIntegral(2)
+      }
+
     },
     methods: {
+      getName(value) {
+        console.log(value, 'value');
+        if (value == '优享积分间推') {
+          value = '种草积分间推'
+        } else if (value == '优享积分直推') {
+          value == '种草积分直推'
+        }
+        return value
+      },
       nums() {
 
         this.$http.post(`api/lyPay/selectExamineRecord`, {
           userId: JSON.parse(localStorage.getItem('user')).id,
-          size:100,
-          page:1
+          size: 100,
+          page: 1
         }).then(res => {
           this.explain = res.data.data.list
           this.explain.map(item => {
@@ -98,16 +132,19 @@
               item.name = '间推'
             }
             if (item.relationship == 3) {
-              item.name = 'VIP团队收益'
+              item.name = 'KOC团队收益'
             }
             if (item.relationship == 4) {
-              item.name = '代言人团队收益'
+
+              item.name = 'KOL团队收益'
             }
             if (item.relationship == 9) {
               item.name = '优享积分直推'
+              item.integral = '种草积分直推'
             }
             if (item.relationship == 6) {
               item.name = '优享积分间推'
+              item.integral = '种草积分间推'
             }
             if (item.relationship == 7) {
               item.name = 'KOC 团队收益'
@@ -129,7 +166,7 @@
     },
     created() {
       this.nums()
-      console.log(JSON.parse(sessionStorage.getItem('rewardIntegral')));
+      // console.log(JSON.parse(sessionStorage.getItem('rewardIntegral')));
       if (!this.rewardIntegral) {
         this.rewardIntegral = JSON.parse(sessionStorage.getItem('rewardIntegral'))
       }

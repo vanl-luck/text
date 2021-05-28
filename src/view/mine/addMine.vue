@@ -151,7 +151,13 @@
           this.$toast("消费金额不能为空");
         } else if (this.currentDate == "") {
           this.$toast("消费时间不能为空");
-        } else {
+        }else if(this.fileList.length==0){
+          this.$toast("消费凭证不能为空");
+        }
+        
+        
+        
+        else {
             let param={
                 consumptionTime:this.starttime,   
                 project:this.project,
@@ -167,7 +173,7 @@
             this.$toast("提交成功");
             this.$router.go(-1)
           }else{
-             this.$toast("网络错误");
+              this.$toast(res.data.message);
           }
         })
             .catch(function (error) {
