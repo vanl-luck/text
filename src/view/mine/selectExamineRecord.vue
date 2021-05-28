@@ -23,8 +23,8 @@
             <p class="running"> </p>
             <div v-for="(item,index) in explain">
               <van-panel
-              v-if="item.relationship!=9"
-                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.relationship+')'"
+              v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
             </div>
@@ -32,9 +32,9 @@
         </van-collapse-item>
         <van-collapse-item title="优享积分" name="2">
           <div>
-            <div v-for="(item,index) in explain">
+            <div v-for="(item,index) in explain" :key="index">
               <van-panel
-              v-if="item.relationship==9"
+              v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+'优享积分'+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
@@ -76,31 +76,34 @@
 
 
             if (item.relationship == 1) {
-              item.relationship = '直推'
+              item.name = '直推'
             }
             if (item.relationship == 2) {
-              item.relationship = '间推'
+              item.name = '间推'
             }
             if (item.relationship == 3) {
-              item.relationship = 'VIP团队收益'
+              item.name = 'VIP团队收益'
             }
             if (item.relationship == 4) {
-              item.relationship = '代言人团队收益'
+              item.name = '代言人团队收益'
             }
-            if (item.relationship == 5) {
-              item.relationship = '终端直推提成'
+            if (item.relationship == 9) {
+              item.name = '优享积分直推'
             }
             if (item.relationship == 6) {
-              item.relationship = '终端间推提成'
+              item.name = '优享积分间推'
             }
             if (item.relationship == 7) {
-              item.relationship = '终端代言人团队奖'
+              item.name = 'KOC 团队收益'
             }
             if (item.relationship == 8) {
-              item.relationship = '终端终端VIP团队奖'
+              item.name = 'KOL 团队收益'
             }
+            //        if (item.relationship == 9) {
+            //   item.name = '终端终端VIP团队奖'
+            // }
             //      if (item.relationship == 9) {
-            //   item.relationship = '优享积分'
+            //   item.name = '优享积分'
             // }
 
           })

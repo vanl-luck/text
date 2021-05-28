@@ -37,7 +37,7 @@ const routes = [
       {name: 'home', path: 'home', component: TabHome, meta: {keepAlive: true}},
       {name: 'products', path: 'products', component: TabProducts, meta: {keepAlive: true}},
       {name: 'discover', path: 'discover', component: TabDiscover, meta: {keepAlive: true}},
-      {name: 'mine', path: 'mine', component: TabMine, meta: {keepAlive: true}},
+      {name: 'mine', path: 'mine', component: TabMine, meta: {keepAlive: false}},
     ], meta: {keepAlive: true}
   },
   {name: 'basic', component: basic},
