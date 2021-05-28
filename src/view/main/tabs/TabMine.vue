@@ -74,7 +74,7 @@
           {
             icon: 'mine_app_icon6.png',
             flag: '',
-            title: '消费明细',
+            title: '升级记录',
             id: 2
           },
           {

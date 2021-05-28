@@ -1,6 +1,6 @@
 <template>
   <div style="background:#f7f7f7">
-    <van-nav-bar left-arrow @click-left="_routerBack" title="消费明细" fixed :z-index="10"></van-nav-bar>
+    <van-nav-bar left-arrow @click-left="_routerBack" title="升级记录" fixed :z-index="10"></van-nav-bar>
     <div style="margin-top:50px;display:flex">
       <van-button style="flex:1;width:150px;" @click="payData" type="default">全部</van-button>
       <van-button style="flex:1;width:150px;" @click="payData('1')" type="default">已付</van-button>
