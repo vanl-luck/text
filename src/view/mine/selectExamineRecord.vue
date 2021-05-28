@@ -7,9 +7,9 @@
       <div class="explain">
         <p>
           <br>
-          <span style="color:#777f7f;font-size:14px;">
+          <!-- <span style="color:#777f7f;font-size:14px;">
             奖励积分
-          </span>
+          </span> -->
         </p>
         <div>
           <p class="fontCor">
@@ -18,10 +18,10 @@
         </div>
       </div>
       <van-collapse v-model="activeNames">
-        <van-collapse-item title="积分流水" name="1">
+        <van-collapse-item :title="'招商积分'" name="1">
           <div>
             <p class="running"> </p>
-            <div v-for="(item,index) in explain">
+            <div v-for="(item,index) in explain" :key="index">
               <van-panel
               v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
@@ -30,7 +30,7 @@
             </div>
           </div>
         </van-collapse-item>
-        <van-collapse-item title="优享积分" name="2">
+        <van-collapse-item title="种草积分" name="2">
           <div>
             <div v-for="(item,index) in explain" :key="index">
               <van-panel
@@ -56,11 +56,27 @@
         activeNames: [],
         explain: [],
         memberName: '<span></span>',
-        rewardIntegral: this.$route.params.rewardIntegral
+        rewardIntegral: this.$route.params.rewardIntegral,
+        num:{
+      rewardIntegral: '',
+          excellentIntegral: '',
+          shareIntegral: '',
+        }
       }
     },
+        computed: {
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+      excellentIntegral() {
+        return this.num.excellentIntegral
+      },
+      rewardIntegral() {
+        return this.num.rewardIntegral
+      },
+    },
     methods: {
-      num() {
+      nums() {
 
         this.$http.post(`api/lyPay/selectExamineRecord`, {
           userId: JSON.parse(localStorage.getItem('user')).id,
@@ -112,13 +128,13 @@
       }
     },
     created() {
-      this.num()
+      this.nums()
       console.log(JSON.parse(sessionStorage.getItem('rewardIntegral')));
       if (!this.rewardIntegral) {
         this.rewardIntegral = JSON.parse(sessionStorage.getItem('rewardIntegral'))
       }
-
-      console.log(this.$route.params);
+      // this.num=JSON.parse(localStorage.getItem('user'))
+      console.log(this.num);
     }
 
   }
