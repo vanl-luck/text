@@ -73,41 +73,43 @@
       rewardIntegral() {
         return this.num.rewardIntegral
       },
-      getzcIntegral(){
-         return function (a) {
-          let num=''
-        this.explain.forEach(item=>{
-          if(a==1){
+      getzcIntegral() {
+        return function (a) {
+          let num = 0
+          this.explain.forEach(item => {
+            if (a == 1) {
 
-            if(item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5){
-              num= + item.rewardIntegral
-          }
-            }else if(a==2){
-                   if(item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9){
-            num= + item.rewardIntegral
-          }
-            }else if(a==3){
-              // console.log(a,'1221');
-               num= + item.rewardIntegral
+              if (item.relationship == 1 || item.relationship == 2 || item.relationship == 3 || item
+                .relationship == 4 || item.relationship == 5) {
+               num+= Number(item.rewardIntegral)
+              }
+            } else if (a == 2) {
+              if (item.relationship == 6 || item.relationship == 7 || item.relationship == 8 || item
+                .relationship == 9) {
+               num+= Number(item.rewardIntegral)
+              }
+            } else if (a == 3) {
+             num+= Number(item.rewardIntegral)
             }
-        })
-        return num
-    }
-  
+          })
+          return num
+        }
+
       },
-      getzcIntegrals(){
-      return  this.getzcIntegral(1)+this.getzcIntegral(2)
+      getzcIntegrals() {
+        return this.getzcIntegral(1) + this.getzcIntegral(2)
       }
 
     },
     methods: {
       getName(value) {
-        console.log(value, 'value');
         if (value == '优享积分间推') {
           value = '种草积分间推'
         } else if (value == '优享积分直推') {
-          value == '种草积分直推'
+          value = '种草积分直推'
         }
+        console.log(value, 'value');
+
         return value
       },
       nums() {
