@@ -49,7 +49,7 @@
           this._dismissLoading();
           console.log(res);
           Dialog({
-            message: res.data.message
+            message: '修改成功'
           }).then();
         }).catch(err => {
           this._dismissLoading();

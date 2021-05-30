@@ -13,15 +13,15 @@
 
         <div v-for="(item,index) in yList" 　v-if="yList.length!=0">
 
-          <van-card title="　" thumb="../../../../static/img/LOGO B.png">
+          <van-card class="imgBorder" round :thumb="item.headUrl">
             <div slot="tags">
               <div>用户名：{{item.userName}} <span style="color:red">({{item.memberName}})</span> </div>
               <div>加入时间：{{item.registrationTime}} </div>
               <div>手机号：{{item.phone}} </div>
               <div>消费额：{{item.sumAmount}} </div>
               <div v-for="(domain,index) in item.list">
-                <van-card title="　" thumb="../../../../static/img/LOGO B.png"
-                  style="margin-left: -117px;">
+                <van-card class="imgBorder" round :thumb="item.headUrl"
+                  style="margin-left: -117px;margin-top:10px">
                   <div slot="tags">
                     <div>用户名：{{domain.userName}} <span style="color:red">({{domain.memberName}})</span> </div>
                     <div>加入时间：{{domain.registrationTime}} </div>
@@ -272,5 +272,17 @@
     line-height: 20;
     text-align: center;
   }
+.imgBorder{
+  // border-radius: 15px;
+ img{
+    width: 65px;
+ }
+}
+/deep/.van-image{
+  img{
+    width: 65px;
+    border-radius: 15px;
+ }
+}
 
 </style>

@@ -125,13 +125,14 @@
 
 
 
-        if ((this.Tqu && this.Alipay) || value) {
+        if ((this.Tqu && this.Alipay) ||( value&& this.Alipay)) {
 
           let param = {
             userId: JSON.parse(localStorage.getItem("user")).id,
             amount:this.judge==3? value:this.Tqu,
             type: this.judge,
-            consumptionId: id
+            consumptionId: id,
+            alipayUser:this.Alipay
           }
           if (!isNaN(value)) {
             param.amount = value
