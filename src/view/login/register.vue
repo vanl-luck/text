@@ -152,6 +152,7 @@
               'Content-Type': 'application/json',
             };
             this.$http.post(`api/user/register`, param).then(res => {
+              console.log(res.data);
               if (res.data.code == 200) {
                 this._showLoading();
                 setTimeout(() => {
@@ -162,7 +163,7 @@
                 }, 1000);
 
               } else {
-                Toast(res.message);
+                Toast(res.data.message);
               }
             }).catch(err => {
               this._dismissLoading();
