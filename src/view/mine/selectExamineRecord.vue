@@ -115,7 +115,7 @@
 
       },
       getzcIntegrals() {
-        return this.getzcIntegral(1) + this.getzcIntegral(2)
+        return this.getzcIntegral(1) + this.getzcIntegral(2)+this.getzcIntegral(4)
       }
 
     },
