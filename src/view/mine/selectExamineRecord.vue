@@ -42,15 +42,31 @@
             </div>
           </div>
         </van-collapse-item>
-          <van-collapse-item :title="'团队收益'+'('+getzcIntegral(4)+')'" name="3">
+          <van-collapse-item :title="'招商团队收益'+'('+getzcIntegral(4)+')'" name="3">
           <div>
             <p class="running"> </p>
             <div v-for="(item,index) in explain" :key="index">
+              <span v-if="item.rewardIntegral!=0">
               <van-panel
-                v-if="item.relationship==3||item.relationship==4||item.relationship==7||item.relationship==8"
+                v-if="item.relationship==3||item.relationship==4"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
+              </span>
+            </div>
+          </div>
+        </van-collapse-item>
+             <van-collapse-item :title="'种草团队收益'+'('+getzcIntegral(5)+')'" name="4">
+          <div>
+            <p class="running"> </p>
+            <div v-for="(item,index) in explain" :key="index">
+              <span v-if="item.rewardIntegral!=0">
+              <van-panel
+                v-if="item.relationship==7||item.relationship==8"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
+                :desc="item.addTime" :status="item.rewardIntegral">
+              </van-panel>
+              </span>
             </div>
           </div>
         </van-collapse-item>
@@ -104,8 +120,11 @@
             } else if (a == 3) {
              num+= Number(item.rewardIntegral)
             }else if (a==4){
-                   if (item.relationship == 3 || item.relationship == 4 || item.relationship == 7 || item
-                .relationship == 8) {
+                   if (item.relationship == 3 || item.relationship == 4 ) {
+               num+= Number(item.rewardIntegral)
+               }
+              }else if(a==5){
+                  if ( item.relationship == 7 || item.relationship == 8) {
                num+= Number(item.rewardIntegral)
               }
             }
@@ -115,7 +134,7 @@
 
       },
       getzcIntegrals() {
-        return this.getzcIntegral(1) + this.getzcIntegral(2)+this.getzcIntegral(4)
+        return this.getzcIntegral(3) 
       }
 
     },
