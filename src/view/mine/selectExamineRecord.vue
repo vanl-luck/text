@@ -32,11 +32,13 @@
         </van-collapse-item>
         <van-collapse-item :title="'种草积分'+'('+getzcIntegral(2)+')'" name="2">
           <div>
-            <div v-for="(item,index) in explain" :key="index">
+            <div v-for="(item,index) in explain" :key="index" >
+              <span v-if="item.rewardIntegral!=0">
               <van-panel v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+getName(item.name)+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
+              </span>
             </div>
           </div>
         </van-collapse-item>
