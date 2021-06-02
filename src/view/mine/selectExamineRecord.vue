@@ -23,7 +23,7 @@
             <p class="running"> </p>
             <div v-for="(item,index) in explain" :key="index">
               <van-panel
-                v-if="item.relationship==1||item.relationship==2||item.relationship==3||item.relationship==4||item.relationship==5"
+                v-if="item.relationship==1||item.relationship==2||item.relationship==5"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
@@ -34,11 +34,23 @@
           <div>
             <div v-for="(item,index) in explain" :key="index" >
               <span v-if="item.rewardIntegral!=0">
-              <van-panel v-if="item.relationship==6||item.relationship==7||item.relationship==8||item.relationship==9"
+              <van-panel v-if="item.relationship==6||item.relationship==9"
                 :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+getName(item.name)+')'"
                 :desc="item.addTime" :status="item.rewardIntegral">
               </van-panel>
               </span>
+            </div>
+          </div>
+        </van-collapse-item>
+          <van-collapse-item :title="'团队收益'+'('+getzcIntegral(4)+')'" name="3">
+          <div>
+            <p class="running"> </p>
+            <div v-for="(item,index) in explain" :key="index">
+              <van-panel
+                v-if="item.relationship==3||item.relationship==4||item.relationship==7||item.relationship==8"
+                :title="item.parentName+' 推荐 '+item.invitedName+' ['+item.memberName+']'+' ('+item.name+')'"
+                :desc="item.addTime" :status="item.rewardIntegral">
+              </van-panel>
             </div>
           </div>
         </van-collapse-item>
@@ -81,17 +93,21 @@
           this.explain.forEach(item => {
             if (a == 1) {
 
-              if (item.relationship == 1 || item.relationship == 2 || item.relationship == 3 || item
-                .relationship == 4 || item.relationship == 5) {
+              if (item.relationship == 1 || item.relationship == 2   || item.relationship == 5) {
                num+= Number(item.rewardIntegral)
               }
             } else if (a == 2) {
-              if (item.relationship == 6 || item.relationship == 7 || item.relationship == 8 || item
+              if (item.relationship == 6 || item
                 .relationship == 9) {
                num+= Number(item.rewardIntegral)
               }
             } else if (a == 3) {
              num+= Number(item.rewardIntegral)
+            }else if (a==4){
+                   if (item.relationship == 3 || item.relationship == 4 || item.relationship == 7 || item
+                .relationship == 8) {
+               num+= Number(item.rewardIntegral)
+              }
             }
           })
           return num
